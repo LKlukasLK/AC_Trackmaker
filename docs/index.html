@@ -6,9 +6,6 @@
   <title>AC Tracker — Editor de circuitos para Assetto Corsa</title>
   <meta name="description" content="AC Tracker: programa de escritorio para Windows para crear circuitos de Assetto Corsa sin modelar en 3D y exportarlos directamente al juego.">
   <meta name="theme-color" content="#232429">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -1258,6 +1255,7 @@
             <tr><td><strong>PNOA</strong> (IGN)</td><td>Satélite en España</td><td>CC BY 4.0</td><td>«PNOA cedido por © Instituto Geográfico Nacional»</td></tr>
             <tr><td><strong>Esri World Imagery</strong></td><td>Satélite fuera de España</td><td>Solo uso personal</td><td>«Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community»</td></tr>
             <tr><td><strong>Godot Engine</strong></td><td>Motor</td><td>MIT</td><td>Incluir su licencia si se distribuye</td></tr>
+            <tr><td><strong>Barlow</strong> (The Barlow Project Authors)</td><td>Tipografía de esta web</td><td>SIL Open Font License 1.1</td><td>Licencia incluida en <code>fonts/OFL-Barlow.txt</code></td></tr>
           </tbody>
         </table>
       </div>
@@ -1270,6 +1268,51 @@
     </div>
   </section>
 
+  <!-- =========================================================
+       AVISO LEGAL Y PRIVACIDAD
+       ========================================================= -->
+  <section class="section section--alt" id="legal" aria-labelledby="titulo-legal" data-nav="creditos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Lo básico, en claro</span>
+        <h2 id="titulo-legal">Aviso legal y privacidad</h2>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <div class="panel">
+          <h3>Aviso legal</h3>
+          <ul>
+            <!-- PENDIENTE: nombre o alias del responsable de la web -->
+            <li><strong>Responsable:</strong> <span class="muted">[nombre o alias pendiente]</span></li>
+            <!-- PENDIENTE: forma de contacto (correo o perfil de GitHub) -->
+            <li><strong>Contacto:</strong> <span class="muted">[contacto pendiente]</span></li>
+            <li><strong>Finalidad:</strong> web informativa y sin ánimo de lucro que presenta y documenta AC Tracker. No vende nada ni muestra publicidad.</li>
+            <li><strong>Contenido:</strong> la información es orientativa. AC Tracker es un proyecto en desarrollo y puede cambiar; se ofrece tal cual, sin garantías.</li>
+            <li><strong>Marcas:</strong> Assetto Corsa y el resto de marcas citadas pertenecen a sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</li>
+            <li><strong>Datos de terceros:</strong> las fuentes de mapas, relieve e imágenes y sus condiciones están en <a href="#creditos">Créditos y licencias</a>.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Privacidad</h3>
+          <div class="callout callout--ok" style="margin-top:0">
+            <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <div><span class="callout-title">Esta web no recoge datos personales</span>
+              <p>Sin formularios, sin registro, sin analítica y sin cookies.</p></div>
+          </div>
+          <ul>
+            <li><strong>Sin servicios de terceros:</strong> todo se sirve desde la propia web, incluida la tipografía. No se cargan fuentes, scripts ni estadísticas de otras empresas.</li>
+            <li><strong>Sin cookies:</strong> por eso no hay aviso de cookies.</li>
+            <!-- PENDIENTE: indicar el alojamiento definitivo (GitHub Pages o Vercel) -->
+            <li><strong>Alojamiento:</strong> como en cualquier web, el servicio de alojamiento puede registrar datos técnicos de la visita (por ejemplo, la dirección IP) por seguridad y funcionamiento. Se rigen por la política de privacidad de ese servicio.</li>
+            <li><strong>Si esto cambia</strong> (por ejemplo, si se añade un formulario de contacto), se actualizará esta sección antes.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:18px"><svg class="icon" aria-hidden="true" style="width:18px;height:18px;vertical-align:-4px;stroke:#9a9ca5"><use href="#i-scale"/></svg> Texto orientativo, no asesoría legal.</p>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -1278,6 +1321,7 @@
     <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
     <p>Editor de circuitos para Assetto Corsa · Hecho con Godot 4.6 · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</p>
+    <p><a href="#legal">Aviso legal y privacidad</a> · <a href="#creditos">Créditos y licencias</a></p>
   </div>
 </footer>
 
