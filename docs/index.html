@@ -91,7 +91,7 @@
         <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con imagen de satélite), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
         <ul class="badges" aria-label="Datos del proyecto">
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</li>
-          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg>Godot 4.6 (GDScript)</li>
+          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-import"/></svg>Descarga en .exe</li>
           <li class="badge badge--amber"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Proyecto en desarrollo</li>
         </ul>
         <div class="btn-row">
@@ -101,7 +101,7 @@
         <!-- PENDIENTE: enlace de descarga -->
         <div class="placeholder placeholder--inline" style="margin-top:20px" role="note" aria-label="Enlace de descarga pendiente">
           <svg class="icon" aria-hidden="true"><use href="#i-import"/></svg>
-          <span><strong>Descarga:</strong> enlace pendiente de añadir.</span>
+          <span><strong>Descarga (.exe para Windows):</strong> enlace pendiente de añadir.</span>
         </div>
       </div>
       <div>
@@ -193,21 +193,18 @@
           <h3>Requisitos</h3>
           <ul>
             <li><strong>Windows.</strong></li>
-            <li><strong>Godot 4.6</strong> estándar (no hace falta la versión .NET). El renderizador está configurado en <strong>D3D12</strong>.</li>
-            <li>Físicas: <strong>Jolt</strong> (incluido en Godot 4.6).</li>
+            <li>Tarjeta gráfica compatible con <strong>DirectX 12</strong>.</li>
             <li><strong>Internet</strong> solo para el mapa real (relieve, imágenes y buscador).</li>
             <li><strong>Assetto Corsa</strong> instalado para exportar directamente al juego.</li>
           </ul>
         </div>
         <div class="panel">
-          <h3>Abrir el proyecto</h3>
+          <h3>Puesta en marcha</h3>
           <ol class="steps steps--compact">
-            <li>En Godot, pulsa <strong>Importar</strong>.</li>
-            <li>Elige el archivo <code>project.godot</code>.</li>
-            <li>Pulsa <strong>Ejecutar</strong> (<kbd>F5</kbd>).</li>
+            <li><strong>Descarga</strong> el archivo <code>.exe</code> (<a href="#inicio">enlace en la portada</a>).</li>
+            <li><strong>Ábrelo</strong> con doble clic.</li>
+            <li>Sigue el <a href="#como-funciona">flujo de trabajo</a> para crear tu primer circuito.</li>
           </ol>
-          <p class="muted">Desde consola:</p>
-          <pre><code>godot --path .</code></pre>
         </div>
       </div>
     </div>
@@ -1254,7 +1251,7 @@
             <tr><td><strong>Terrain Tiles</strong> (Mapzen / AWS Open Data)</td><td>Relieve</td><td>Datos abiertos; atribución según región</td><td>En España: Copernicus EU-DEM (UE) y SRTM (USGS)</td></tr>
             <tr><td><strong>PNOA</strong> (IGN)</td><td>Satélite en España</td><td>CC BY 4.0</td><td>«PNOA cedido por © Instituto Geográfico Nacional»</td></tr>
             <tr><td><strong>Esri World Imagery</strong></td><td>Satélite fuera de España</td><td>Solo uso personal</td><td>«Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community»</td></tr>
-            <tr><td><strong>Godot Engine</strong></td><td>Motor</td><td>MIT</td><td>Incluir su licencia si se distribuye</td></tr>
+            <tr><td><strong>Godot Engine</strong></td><td>Motor con el que está hecho el programa</td><td>MIT</td><td>Su licencia va incluida con el programa</td></tr>
             <tr><td><strong>Barlow</strong> (The Barlow Project Authors)</td><td>Tipografía de esta web</td><td>SIL Open Font License 1.1</td><td>Licencia incluida en <code>fonts/OFL-Barlow.txt</code></td></tr>
           </tbody>
         </table>
@@ -1319,7 +1316,7 @@
   <div class="kerb" aria-hidden="true"></div>
   <div class="container">
     <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
-    <p>Editor de circuitos para Assetto Corsa · Hecho con Godot 4.6 · Proyecto en desarrollo.</p>
+    <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</p>
     <p><a href="#legal">Aviso legal y privacidad</a> · <a href="#creditos">Créditos y licencias</a></p>
   </div>
