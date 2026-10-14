@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AC Tracker — Editor de circuitos para Assetto Corsa</title>
+  <meta name="description" content="AC Tracker: programa de escritorio para Windows para crear circuitos de Assetto Corsa sin modelar en 3D y exportarlos directamente al juego.">
+  <meta name="theme-color" content="#232429">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Iconos de línea (trazo blanco) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></symbol>
+    <symbol id="i-wall" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 20 9 7l4 7 2.5-3.5L22 20z"/><path d="m7.2 10.3 1.8 1.7 1.6-1.5"/></symbol>
+    <symbol id="i-hole" viewBox="0 0 24 24"><path d="M3 14h4M17 14h4"/><ellipse cx="12" cy="14" rx="5" ry="2.2"/><path d="M7 14c0 3.5 2.2 6 5 6s5-2.5 5-6"/><path d="M12 4v5M9.5 6.5 12 9l2.5-2.5"/></symbol>
+    <symbol id="i-tunnel" viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4 20V12a8 8 0 0 1 16 0v8"/><path d="M8 20v-7a4 4 0 0 1 8 0v7"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/><path d="M9.3 4v9M13.6 4v9"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3 5 13h4l-3 5h12l-3-5h4z"/><path d="M12 18v3"/></symbol>
+    <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7v.5M12 17h.01"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3M7 21v-7h10v7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8z"/><path d="m2 13 10 5 10-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+    <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a4 4 0 0 1 4 4v2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 8l8 2v11M2 21h20"/><path d="M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24"><path d="m7 7 4 4M4 10l3-3 3 3-3 3zM13 14l3-3 3 3-3 3z"/><path d="m10 10 4 4"/><path d="M15 21a6 6 0 0 0 6-6M15 18a3 3 0 0 0 3-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16"/><path d="m4 7-2 6a3 3 0 0 0 4 0zM20 7l-2 6a3 3 0 0 0 4 0z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#inicio" aria-label="AC Tracker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      <span>Menú</span>
+    </button>
+    <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#importar">Importar relieve</a></li>
+        <li><a href="#exportar">Exportar a AC</a></li>
+        <li><a href="#atajos">Atajos</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+        <li><a href="#creditos">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="kerb" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+
+  <!-- =========================================================
+       INICIO
+       ========================================================= -->
+  <section class="hero" id="inicio" aria-labelledby="titulo-inicio" data-nav="inicio">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Editor de circuitos para Assetto Corsa</span>
+        <h1 id="titulo-inicio">AC <span>Tracker</span></h1>
+        <p class="tagline">De una idea a un circuito jugable en Assetto Corsa, sin pasar por 3ds Max ni Blender.</p>
+        <p class="lead">Programa de escritorio para <strong>Windows</strong> para crear circuitos de <strong>Assetto Corsa</strong> sin modelar en 3D: dibujas la carretera, modelas el terreno, pones muros, túneles, decoración y spawns, y lo <strong>exportas directamente</strong> a la carpeta del juego (el <code>.kn5</code> y todos los archivos de datos).</p>
+        <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con imagen de satélite), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
+        <ul class="badges" aria-label="Datos del proyecto">
+          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</li>
+          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-cube"/></svg>Godot 4.6 (GDScript)</li>
+          <li class="badge badge--amber"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Proyecto en desarrollo</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#como-funciona"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Cómo funciona</a>
+          <a class="btn btn--ghost" href="#herramientas"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Ver las herramientas</a>
+        </div>
+        <!-- PENDIENTE: enlace de descarga -->
+        <div class="placeholder placeholder--inline" style="margin-top:20px" role="note" aria-label="Enlace de descarga pendiente">
+          <svg class="icon" aria-hidden="true"><use href="#i-import"/></svg>
+          <span><strong>Descarga:</strong> enlace pendiente de añadir.</span>
+        </div>
+      </div>
+      <div>
+        <!-- PENDIENTE: captura principal del editor -->
+        <figure class="shot">
+          <div class="placeholder" role="img" aria-label="Marcador: captura principal del editor AC Tracker (pendiente)">
+            <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+            <strong>Captura del editor</strong>
+            <span>Pendiente · 16:9</span>
+          </div>
+          <figcaption>Vista general del editor con un circuito en marcha.</figcaption>
+        </figure>
+        <!-- PENDIENTE: vídeo de presentación -->
+        <figure class="shot">
+          <div class="placeholder placeholder--inline" role="img" aria-label="Marcador: vídeo de presentación (pendiente)">
+            <svg class="icon" aria-hidden="true"><use href="#i-video"/></svg>
+            <span><strong>Vídeo de presentación</strong> — pendiente.</span>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="kerb kerb--thin" aria-hidden="true"></div>
+
+  <!-- Destacados -->
+  <section class="section" id="destacados" aria-labelledby="titulo-destacados" data-nav="inicio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Lo más destacado</span>
+        <h2 id="titulo-destacados">Todo para tu circuito</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">01</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg></div>
+          <h3>Trazado con pianos</h3>
+          <p>Dibuja la carretera y los pianos rojo y blanco se ponen automáticamente.</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">02</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
+          <h3>Relieve real con satélite</h3>
+          <p>Trae el relieve del mapa con imagen de satélite: Tenerife 1:1, una sierra, tu pueblo…</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">03</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></div>
+          <h3>Terreno editable de 2 m</h3>
+          <p>Montañas, aplanar, suavizar y quitar suelo con pinceles.</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">04</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-tunnel"/></svg></div>
+          <h3>Túneles automáticos</h3>
+          <p>Túneles que se completan solos atravesando la montaña.</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">05</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></div>
+          <h3>Decoración</h3>
+          <p>Árboles, público, edificios, gasolineras, rotondas con las salidas que quieras, gradas y modelos de Blender.</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">06</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-export"/></svg></div>
+          <h3>Exportación con un clic</h3>
+          <p>Exportación directa a Assetto Corsa con un clic.</p>
+        </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">07</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-save"/></svg></div>
+          <h3>Proyectos con autoguardado</h3>
+          <p>Guarda tu trabajo en proyectos; el autoguardado va aparte y nunca sobrescribe tu proyecto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requisitos -->
+  <section class="section section--alt" id="requisitos" aria-labelledby="titulo-requisitos" data-nav="inicio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Antes de empezar</span>
+        <h2 id="titulo-requisitos">Requisitos y puesta en marcha</h2>
+      </div>
+      <div class="grid grid--2">
+        <div class="panel">
+          <h3>Requisitos</h3>
+          <ul>
+            <li><strong>Windows.</strong></li>
+            <li><strong>Godot 4.6</strong> estándar (no hace falta la versión .NET). El renderizador está configurado en <strong>D3D12</strong>.</li>
+            <li>Físicas: <strong>Jolt</strong> (incluido en Godot 4.6).</li>
+            <li><strong>Internet</strong> solo para el mapa real (relieve, imágenes y buscador).</li>
+            <li><strong>Assetto Corsa</strong> instalado para exportar directamente al juego.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Abrir el proyecto</h3>
+          <ol class="steps steps--compact">
+            <li>En Godot, pulsa <strong>Importar</strong>.</li>
+            <li>Elige el archivo <code>project.godot</code>.</li>
+            <li>Pulsa <strong>Ejecutar</strong> (<kbd>F5</kbd>).</li>
+          </ol>
+          <p class="muted">Desde consola:</p>
+          <pre><code>godot --path .</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interfaz -->
+  <section class="section" id="interfaz" aria-labelledby="titulo-interfaz" data-nav="inicio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Conoce el editor</span>
+        <h2 id="titulo-interfaz">La interfaz</h2>
+      </div>
+      <div class="grid grid--2" style="align-items:start">
+        <figure class="shot" style="margin-top:0">
+          <div class="ui-mock" role="img" aria-label="Esquema de la interfaz: barra superior de herramientas, vista 3D a la izquierda, panel derecho de ajustes con la acción principal abajo y barra de estado al pie">
+            <div class="ui-top" aria-hidden="true"><span>Archivo</span><span class="on">Trazado</span><span>Muros</span><span>…</span><span>Exportar AC</span></div>
+            <div class="ui-view" aria-hidden="true">
+              <svg viewBox="0 0 300 200" preserveAspectRatio="none">
+                <path d="M40 160 C 60 60, 160 40, 200 90 S 270 170, 250 60" fill="none" stroke="#55575f" stroke-width="16" stroke-linecap="round"/>
+                <path d="M40 160 C 60 60, 160 40, 200 90 S 270 170, 250 60" fill="none" stroke="#e0393e" stroke-width="2" stroke-dasharray="6 6"/>
+                <circle cx="250" cy="60" r="6" fill="#4cc97a"/>
+              </svg>
+              <span class="ui-label">Vista 3D</span>
+            </div>
+            <div class="ui-side" aria-hidden="true"><span class="ui-label" style="background:none;padding:0">Panel</span><i></i><i></i><i style="width:70%"></i><i></i><div class="ui-main-action">Guardar</div></div>
+            <div class="ui-status" aria-hidden="true">Proyecto · pistas · muros · túneles · árboles · público · estructuras · X Y Z · FPS</div>
+          </div>
+          <figcaption>Esquema de la ventana (no es una captura real).</figcaption>
+        </figure>
+        <dl class="def-list">
+          <div>
+            <dt>Barra superior</dt>
+            <dd>Las herramientas (Archivo primero, luego Trazado… Exportar AC), la ayuda (<kbd>F1</kbd>) y el botón para ocultar el panel (<kbd>N</kbd>). Si la ventana es estrecha, solo se ven los iconos (el nombre sale al pasar el ratón).</dd>
+          </div>
+          <div>
+            <dt>Vista 3D</dt>
+            <dd>El circuito. <span class="dot dot--green" aria-hidden="true"></span>Punto verde = puntero sobre el suelo (<span class="dot dot--blue" aria-hidden="true"></span>azul cuando un muro se imanta a la pista).</dd>
+          </div>
+          <div>
+            <dt>Panel derecho</dt>
+            <dd>Ajustes y acciones de la herramienta activa; abajo, una zona fija con la acción principal (Guardar, Aplicar, Exportar…).</dd>
+          </div>
+          <div>
+            <dt>Barra de estado</dt>
+            <dd>Ayuda corta, nombre del proyecto, número de pistas, muros, túneles, árboles, público y estructuras, coordenadas y altura bajo el ratón, FPS.</dd>
+          </div>
+          <div>
+            <dt>Avisos emergentes</dt>
+            <dd>Arriba en el centro: <span class="dot dot--green" aria-hidden="true"></span>verde = bien, <span class="dot dot--amber" aria-hidden="true"></span>ámbar = aviso, <span class="dot dot--red" aria-hidden="true"></span>rojo = error.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CÓMO FUNCIONA
+       ========================================================= -->
+  <section class="section section--alt" id="como-funciona" aria-labelledby="titulo-como" data-nav="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Flujo de trabajo típico</span>
+        <h2 id="titulo-como">Cómo funciona</h2>
+        <p class="lead">Estos son los pasos habituales para pasar de un mapa vacío a un circuito listo para Assetto Corsa.</p>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <ol class="steps">
+          <li><strong>Relieve <span class="step-optional">opcional</span></strong>
+            Importar → <em>Elegir zona en el mapa</em> → marcar zona → descargar. Sin relieve se trabaja sobre un mapa plano de 600 × 600 m.</li>
+          <li><strong>Trazado</strong>
+            Dibuja la carretera haciendo clic sobre el relieve.</li>
+          <li><strong>Detalle editable</strong>
+            Elevaciones → Detalle editable → <em>Pintar a lo largo de las pistas</em> → Aplicar (terreno de 2 m junto a la carretera).</li>
+          <li><strong>Ajustar el terreno</strong>
+            <em>Adaptar terreno a las pistas</em> (en Trazado) y pinceles de Elevaciones.</li>
+          <li><strong>Muros, Túneles y Quitar suelo</strong>
+            Donde haga falta.</li>
+          <li><strong>Spawns</strong>
+            Línea de meta y al menos un box.</li>
+          <li><strong>Decoración</strong>
+            Árboles, público en las gradas, edificios, rotondas…</li>
+          <li><strong>Exportar AC</strong>
+            El circuito va directo a la carpeta del juego.</li>
+          <li><strong>Guardar</strong>
+            En cualquier momento con <kbd>Ctrl</kbd>+<kbd>S</kbd>.</li>
+        </ol>
+
+        <div>
+          <!-- PENDIENTE: captura del flujo de trabajo -->
+          <figure class="shot" style="margin-top:0">
+            <div class="placeholder" role="img" aria-label="Marcador: captura de un circuito con relieve y detalle editable (pendiente)">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <strong>Captura: circuito con relieve y detalle editable</strong>
+              <span>Pendiente · 16:9</span>
+            </div>
+            <figcaption>Relieve importado con una franja de detalle editable a lo largo de la pista.</figcaption>
+          </figure>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Consejo</span>
+              <p>Los pinceles de Elevaciones solo actúan sobre el <strong>terreno de detalle</strong>. Crea primero el detalle editable (paso 3) y luego ajusta el terreno.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terreno en dos capas -->
+      <div id="terreno" style="margin-top:40px">
+        <h3 style="font-size:1.6rem;font-style:italic;text-transform:uppercase">Cómo funciona el terreno: dos capas</h3>
+
+        <figure class="diagram">
+          <svg viewBox="0 0 760 300" role="img" aria-labelledby="diag-titulo diag-desc">
+            <title id="diag-titulo">Diagrama del terreno en dos capas</title>
+            <desc id="diag-desc">Corte lateral del terreno. Abajo, el relieve base: una línea de pocos puntos, uno cada 10 a 30 metros, que no se edita. Encima, en una zona, el terreno de detalle: una tesela de 200 por 200 metros con un punto cada 2 metros, editable con los pinceles. Donde hay detalle, la base se hunde 1,5 metros para no taparlo.</desc>
+            <!-- capa base -->
+            <polyline points="20,230 110,190 200,205 290,160 380,170 470,150 560,175 650,140 740,165"
+                      fill="none" stroke="#9a9ca5" stroke-width="3" stroke-linejoin="round"/>
+            <g fill="#9a9ca5">
+              <circle cx="20" cy="230" r="5"/><circle cx="110" cy="190" r="5"/><circle cx="200" cy="205" r="5"/>
+              <circle cx="560" cy="175" r="5"/><circle cx="650" cy="140" r="5"/><circle cx="740" cy="165" r="5"/>
+            </g>
+            <!-- base hundida bajo el detalle -->
+            <polyline points="290,172 380,182 470,162" fill="none" stroke="#9a9ca5" stroke-width="2" stroke-dasharray="6 5"/>
+            <g fill="#9a9ca5" opacity="0.6"><circle cx="290" cy="172" r="4"/><circle cx="380" cy="182" r="4"/><circle cx="470" cy="162" r="4"/></g>
+            <!-- capa de detalle -->
+            <rect x="250" y="60" width="260" height="190" rx="8" fill="rgba(224,57,62,0.08)" stroke="#e0393e" stroke-dasharray="8 6"/>
+            <path d="M250 168 L262 166 274 163 286 160 298 158 310 159 322 162 334 166 346 168 358 167 370 166 382 168 394 167 406 163 418 158 430 155 442 154 454 152 466 150 478 151 490 152 502 151 510 151"
+                  fill="none" stroke="#4cc97a" stroke-width="3" stroke-linejoin="round"/>
+            <!-- carretera sobre el detalle -->
+            <rect x="346" y="160" width="48" height="6" fill="#e6e7ea" rx="1"/>
+            <rect x="346" y="160" width="8" height="6" fill="#e0393e"/><rect x="386" y="160" width="8" height="6" fill="#e0393e"/>
+            <!-- cota 1,5 m -->
+            <line x1="300" y1="160" x2="300" y2="174" stroke="#f2b84b" stroke-width="2"/>
+            <text x="306" y="194" fill="#f2b84b" font-size="14" font-family="Barlow, sans-serif" font-weight="700">−1,5 m</text>
+            <!-- etiquetas -->
+            <text x="262" y="84" fill="#e6e7ea" font-size="16" font-family="Barlow, sans-serif" font-weight="800">2 · TERRENO DE DETALLE</text>
+            <text x="262" y="104" fill="#9a9ca5" font-size="13" font-family="Barlow, sans-serif">Teselas de 200 × 200 m · un punto cada 2 m</text>
+            <text x="262" y="122" fill="#9a9ca5" font-size="13" font-family="Barlow, sans-serif">Pinceles, túneles, Quitar suelo</text>
+            <text x="20" y="270" fill="#e6e7ea" font-size="16" font-family="Barlow, sans-serif" font-weight="800">1 · RELIEVE BASE</text>
+            <text x="20" y="290" fill="#9a9ca5" font-size="13" font-family="Barlow, sans-serif">Un punto cada 10–30 m · no se edita</text>
+            <text x="370" y="153" fill="#e6e7ea" font-size="12" font-family="Barlow, sans-serif" text-anchor="middle">pista</text>
+          </svg>
+          <figcaption>Corte lateral (esquema, sin escala): el relieve base cubre toda la zona y el detalle de 2 m se crea solo donde hace falta.</figcaption>
+        </figure>
+
+        <div class="grid grid--2">
+          <div class="card">
+            <h4 style="margin-top:0"><span class="dot dot--white" aria-hidden="true" style="background:#9a9ca5"></span> 1. Relieve base</h4>
+            <p>El relieve importado convertido en rejilla de baja resolución (un punto cada <strong>10–30 m</strong>). Sirve para verlo entero. <strong>No se edita.</strong></p>
+          </div>
+          <div class="card">
+            <h4 style="margin-top:0"><span class="dot dot--green" aria-hidden="true"></span> 2. Terreno de detalle</h4>
+            <p>Teselas de <strong>200 × 200 m</strong> con un punto cada <strong>2 m</strong>, solo donde hacen falta. Ahí funcionan los pinceles, Adaptar terreno, Quitar suelo y las bocas de túnel. Donde hay detalle, la base se hunde <strong>1,5 m</strong> para no taparlo.</p>
+          </div>
+        </div>
+        <ul style="margin-top:18px">
+          <li><strong>Sin relieve:</strong> mapa plano con una zona de detalle de 600 × 600 m en el origen.</li>
+          <li><strong>Satélite:</strong> en la base, textura de hasta 4096 px; en el detalle, bloques de 800 m a 1024 px (~0,8 m/píxel).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       HERRAMIENTAS
+       ========================================================= -->
+  <section class="section" id="herramientas" aria-labelledby="titulo-herr" data-nav="herramientas">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Guía de herramientas</span>
+        <h2 id="titulo-herr">Herramientas</h2>
+        <p class="lead">Cada herramienta tiene su tecla. Pulsa el número para cambiar de herramienta en el editor.</p>
+      </div>
+
+      <div class="tools-layout">
+        <nav class="tools-index" aria-label="Índice de herramientas">
+          <h3>Índice</h3>
+          <ul>
+            <li><a href="#h-archivo" data-tool="h-archivo"><kbd>0</kbd> Archivo</a></li>
+            <li><a href="#h-trazado" data-tool="h-trazado"><kbd>1</kbd> Trazado</a></li>
+            <li><a href="#h-muros" data-tool="h-muros"><kbd>2</kbd> Muros</a></li>
+            <li><a href="#h-elevaciones" data-tool="h-elevaciones"><kbd>3</kbd> Elevaciones</a></li>
+            <li><a href="#h-quitar-suelo" data-tool="h-quitar-suelo"><kbd>4</kbd> Quitar suelo</a></li>
+            <li><a href="#h-tuneles" data-tool="h-tuneles"><kbd>5</kbd> Túneles</a></li>
+            <li><a href="#h-spawns" data-tool="h-spawns"><kbd>6</kbd> Spawns</a></li>
+            <li><a href="#h-decoracion" data-tool="h-decoracion"><kbd>7</kbd> Decoración</a></li>
+            <li><a href="#h-importar" data-tool="h-importar"><kbd>8</kbd> Importar</a></li>
+            <li><a href="#h-exportar" data-tool="h-exportar"><kbd>9</kbd> Exportar AC</a></li>
+          </ul>
+        </nav>
+
+        <div class="tools-content">
+          <div class="search-box" role="search">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <label for="tool-search" class="visually-hidden">Buscar en la guía de herramientas</label>
+            <input id="tool-search" type="search" placeholder="Buscar en las herramientas (p. ej. «túnel», «Ctrl+Z», «rotonda»)…" autocomplete="off">
+          </div>
+          <p class="search-status" id="search-status" aria-live="polite"></p>
+          <div class="callout callout--warn no-results" id="no-results">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><span class="callout-title">Sin resultados</span><p>Ninguna herramienta contiene ese texto. Prueba con otra palabra.</p></div>
+          </div>
+
+          <!-- ARCHIVO -->
+          <article class="tool-card" id="h-archivo" aria-labelledby="t-archivo">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></div>
+              <h3 id="t-archivo">Archivo</h3>
+              <kbd class="key--big" title="Tecla 0">0</kbd>
+            </header>
+            <div class="tool-body">
+              <ul>
+                <li><strong>Guardar</strong> (<kbd>Ctrl</kbd>+<kbd>S</kbd>) y <strong>Guardar como</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>): archivo <code>.actrack</code>. Se escribe primero en un temporal y luego se renombra: un fallo nunca estropea el archivo anterior.</li>
+                <li><strong>Abrir</strong> (<kbd>Ctrl</kbd>+<kbd>O</kbd>), <strong>recientes</strong> (los 6 últimos), <strong>Nuevo proyecto</strong> (pide confirmación).</li>
+                <li><strong>Autoguardado</strong> cada 1–15 min (3 por defecto) y al cerrar. Va aparte y nunca sobrescribe tu proyecto. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>.</li>
+              </ul>
+              <div class="split">
+                <div class="callout callout--ok" style="margin:0">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+                  <div><span class="callout-title">Se guarda</span>
+                    <p>Terreno editado, pistas, muros, túneles, meta/parrilla/boxes, decoración (incluidos tus PNG y modelos <code>.glb</code> de estructuras), datos de exportación y cámara.</p></div>
+                </div>
+                <div class="callout callout--warn" style="margin:0">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                  <div><span class="callout-title">NO se guarda dentro</span>
+                    <ul>
+                      <li>El <strong>relieve importado</strong>: se guarda la ruta a su <code>.glb</code> y sus opciones y se reimporta al abrir. Si el <code>.glb</code> ya no existe, abre sin relieve y avisa.</li>
+                      <li>Lo pintado en rojo <strong>sin aplicar</strong> en Detalle editable.</li>
+                    </ul></div>
+                </div>
+              </div>
+              <!-- PENDIENTE: captura de la herramienta Archivo -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura del panel de Archivo (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: panel de Archivo</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Guardar, abrir, recientes y autoguardado.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- TRAZADO -->
+          <article class="tool-card" id="h-trazado" aria-labelledby="t-trazado">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg></div>
+              <h3 id="t-trazado">Trazado</h3>
+              <kbd class="key--big" title="Tecla 1">1</kbd>
+            </header>
+            <div class="tool-body">
+              <h4 style="margin-top:0">Controles</h4>
+              <ul>
+                <li><strong>Clic:</strong> añade punto. <strong>Clic derecho</strong> / <kbd>Esc</kbd>: termina. <kbd>Ctrl</kbd>+<kbd>Z</kbd>: quita el último punto.</li>
+                <li><strong>Clic en el extremo de una pista:</strong> la continúa (se pone <span class="dot dot--orange" aria-hidden="true"></span>naranja al pasar por encima).</li>
+                <li>El punto se engancha a la boca de un túnel o al final de una salida de rotonda si está cerca.</li>
+              </ul>
+              <h4>Ajustes</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th scope="col">Ajuste</th><th scope="col">Valor / qué hace</th></tr></thead>
+                  <tbody>
+                    <tr><td>Ancho</td><td>2–30 m</td></tr>
+                    <tr><td>Suavizado de curvas</td><td>Catmull-Rom; se muestrea cada 2 m como máximo.</td></tr>
+                    <tr><td>Circuito cerrado</td><td>Une el final con el principio.</td></tr>
+                    <tr><td>Seguir el relieve</td><td>La carretera toma la altura del suelo entre puntos, con media de 12 m para quitar baches; los extremos respetan la altura del clic.</td></tr>
+                    <tr><td>Pianos rojo y blanco</td><td>Ancho 0,5–3 m.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <h4>Acciones</h4>
+              <ul>
+                <li><strong>Adaptar terreno a las pistas:</strong> sube/baja el terreno bajo las pistas (se deshace desde Elevaciones).</li>
+                <li><strong>Eliminar pista seleccionada.</strong></li>
+                <li><strong>Borrar todas.</strong></li>
+              </ul>
+              <!-- PENDIENTE: captura de la herramienta Trazado -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura de la herramienta Trazado (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: dibujando una pista</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Trazado de una pista con pianos rojo y blanco.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- MUROS -->
+          <article class="tool-card" id="h-muros" aria-labelledby="t-muros">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-wall"/></svg></div>
+              <h3 id="t-muros">Muros</h3>
+              <kbd class="key--big" title="Tecla 2">2</kbd>
+            </header>
+            <div class="tool-body">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th scope="col">Modo</th><th scope="col">Cómo se usa</th></tr></thead>
+                  <tbody>
+                    <tr><td>Modo libre</td><td>Clic añade puntos, clic derecho termina; cerca del borde de la pista se imanta (<span class="dot dot--blue" aria-hidden="true"></span>puntero azul).</td></tr>
+                    <tr><td>Anclar a la pista</td><td>Clic donde empieza y donde acaba en el borde; el muro sigue la curva con la <em>Separación del borde</em>.</td></tr>
+                    <tr><td>Todo el borde</td><td>Muro en todo el borde izquierdo/derecho de la pista seleccionada.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul>
+                <li><strong>Ajustes:</strong> altura, grosor, suavizado y color.</li>
+                <li><kbd>Ctrl</kbd>+<kbd>Z</kbd>: último punto o último muro.</li>
+              </ul>
+              <!-- PENDIENTE: captura de la herramienta Muros -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura de la herramienta Muros (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: muro anclado a la pista</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Muro siguiendo el borde de la pista.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- ELEVACIONES -->
+          <article class="tool-card" id="h-elevaciones" aria-labelledby="t-elev">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></div>
+              <h3 id="t-elev">Elevaciones</h3>
+              <kbd class="key--big" title="Tecla 3">3</kbd>
+            </header>
+            <div class="tool-body">
+              <div class="callout callout--tip" style="margin-top:0">
+                <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                <div><span class="callout-title">Importante</span>
+                  <p>Solo actúan sobre el <strong>terreno de detalle</strong>. El <span class="dot dot--yellow" aria-hidden="true"></span>círculo amarillo indica el radio.</p></div>
+              </div>
+              <h4>Pinceles</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th scope="col">Pincel</th><th scope="col">Uso</th></tr></thead>
+                  <tbody>
+                    <tr><td>Montaña</td><td>Clic; altura 5–150 m y rugosidad.</td></tr>
+                    <tr><td>Subir / Bajar</td><td>Mantener y arrastrar; fuerza en m/s.</td></tr>
+                    <tr><td>Suavizar</td><td>Mantener y arrastrar.</td></tr>
+                    <tr><td>Aplanar</td><td>A la altura donde empezaste.</td></tr>
+                    <tr><td>Detalle editable</td><td>Pinta dónde habrá terreno editable (ver abajo).</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace el último trazo (hasta 30).</p>
+
+              <div class="sub-card">
+                <h4>Detalle editable, paso a paso</h4>
+                <p class="muted">Es la clave para poder modificar el terreno: sin detalle no hay nada que los pinceles puedan tocar.</p>
+                <ol class="steps steps--compact">
+                  <li>El círculo se vuelve <span class="dot dot--red" aria-hidden="true"></span><strong>rojo</strong> (radio 10–300 m).</li>
+                  <li><strong>Mantener y arrastrar</strong> pinta una malla roja = dónde habrá terreno editable. <kbd>Ctrl</kbd>+<kbd>Z</kbd> quita el último trazo.</li>
+                  <li><strong>Pintar a lo largo de las pistas</strong> añade una franja (40–400 m) siguiendo pistas y túneles.</li>
+                  <li>Abajo aparece un <strong>resumen</strong> (ej.: «Pintado: 0,14 km² · 10 teselas nuevas de 200 m»).</li>
+                  <li><strong>Aplicar</strong> crea el terreno, proyecta el satélite y rehace las bocas de túnel. <strong>Borrar lo pintado</strong> descarta.</li>
+                </ol>
+                <div class="callout callout--warn">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                  <div><span class="callout-title">Aviso</span>
+                    <p>Lo pintado en rojo <strong>sin aplicar</strong> no se guarda en el proyecto.</p></div>
+                </div>
+                <div class="callout callout--error">
+                  <svg class="icon" aria-hidden="true"><use href="#i-error"/></svg>
+                  <div><span class="callout-title">Quitar todo el detalle</span>
+                    <p>Elimina todas las teselas: se pierden los cambios de terreno y las bocas de túnel.</p></div>
+                </div>
+              </div>
+              <!-- PENDIENTE: captura de la herramienta Elevaciones -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura del pincel Detalle editable con la malla roja (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: pintando detalle editable</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Malla roja de detalle editable a lo largo de la pista, antes de Aplicar.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- QUITAR SUELO -->
+          <article class="tool-card" id="h-quitar-suelo" aria-labelledby="t-quitar">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-hole"/></svg></div>
+              <h3 id="t-quitar">Quitar suelo</h3>
+              <kbd class="key--big" title="Tecla 4">4</kbd>
+            </header>
+            <div class="tool-body">
+              <ul>
+                <li><strong>Mantener y arrastrar</strong> para hacer huecos, o <strong>Restaurar suelo</strong> para volver a ponerlo.</li>
+                <li>Radio 1–50 m.</li>
+                <li><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace.</li>
+              </ul>
+              <!-- PENDIENTE: captura de la herramienta Quitar suelo -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura de la herramienta Quitar suelo (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: hueco en el terreno</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Hueco hecho con Quitar suelo.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- TÚNELES -->
+          <article class="tool-card" id="h-tuneles" aria-labelledby="t-tuneles">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-tunnel"/></svg></div>
+              <h3 id="t-tuneles">Túneles</h3>
+              <kbd class="key--big" title="Tecla 5">5</kbd>
+            </header>
+            <div class="tool-body">
+              <ol class="steps steps--compact">
+                <li><strong>Clic</strong> al pie de una montaña (o en el extremo de una pista) para la boca.</li>
+                <li><strong>Mueve el ratón</strong> para orientarlo: vista previa <span class="dot dot--green" aria-hidden="true"></span>verde = válido; <span class="dot dot--red" aria-hidden="true"></span>roja = la montaña no basta (hacen falta 3 m de montaña sobre el techo).</li>
+                <li><strong>Clic</strong> para crearlo: se completa solo hasta salir por el otro lado (máx. 3 km) y abre las bocas.</li>
+              </ol>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th scope="col">Ajuste</th><th scope="col">Valor</th></tr></thead>
+                  <tbody>
+                    <tr><td>Ancho</td><td>6–30 m</td></tr>
+                    <tr><td>Altura</td><td>4–15 m</td></tr>
+                    <tr><td>Curva</td><td>°/100 m (negativa a la izquierda)</td></tr>
+                    <tr><td>Inclinación</td><td>%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>Clic derecho cancela, <kbd>Ctrl</kbd>+<kbd>Z</kbd> quita el último.</p>
+              <!-- PENDIENTE: captura de la herramienta Túneles -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura de la vista previa de un túnel (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: vista previa de túnel</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Vista previa verde de un túnel atravesando la montaña.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- SPAWNS -->
+          <article class="tool-card" id="h-spawns" aria-labelledby="t-spawns">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg></div>
+              <h3 id="t-spawns">Spawns</h3>
+              <kbd class="key--big" title="Tecla 6">6</kbd>
+            </header>
+            <div class="tool-body">
+              <h4 style="margin-top:0">Línea de meta + parrilla</h4>
+              <p>Clic sobre la pista. Genera:</p>
+              <ul>
+                <li>Parrilla al tresbolillo (<code>AC_START_n</code>).</li>
+                <li>Salida de vuelta rápida (<code>AC_HOTLAP_START_0</code>).</li>
+                <li>Meta (<code>AC_TIME_0_L</code> / <code>AC_TIME_0_R</code>).</li>
+                <li>En circuitos cerrados, 3 sectores (<code>AC_TIME_1</code> / <code>AC_TIME_2</code>).</li>
+                <li>En tramos abiertos: <code>AC_AB_START</code> / <code>AC_AB_FINISH</code>.</li>
+              </ul>
+              <h4>Boxes</h4>
+              <p>Clic donde va cada box (<code>AC_PIT_n</code>), orientados según la pista + <em>Giro de los boxes</em>.</p>
+              <h4>Ajustes</h4>
+              <p>Puestos 1–40, separación, invertir sentido, sectores.</p>
+              <div class="table-wrap">
+                <table>
+                  <caption>Colores en la vista 3D</caption>
+                  <thead><tr><th scope="col">Color</th><th scope="col">Significado</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="dot dot--blue" aria-hidden="true"></span>Azul</td><td>Parrilla</td></tr>
+                    <tr><td><span class="dot dot--green" aria-hidden="true"></span>Verde</td><td>Vuelta rápida</td></tr>
+                    <tr><td><span class="dot dot--orange" aria-hidden="true"></span>Naranja</td><td>Boxes</td></tr>
+                    <tr><td><span class="dot dot--white" aria-hidden="true"></span>Bloque blanco</td><td>Marca el morro del coche</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout callout--warn">
+                <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                <div><span class="callout-title">Aviso</span>
+                  <p>Hace falta <strong>al menos un box</strong>; el juego permite tantos coches como boxes.</p></div>
+              </div>
+              <!-- PENDIENTE: captura de la herramienta Spawns -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura de la parrilla y los boxes (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: parrilla y boxes</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Parrilla al tresbolillo (azul), vuelta rápida (verde) y boxes (naranja).</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- DECORACIÓN -->
+          <article class="tool-card" id="h-decoracion" aria-labelledby="t-deco">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></div>
+              <h3 id="t-deco">Decoración</h3>
+              <kbd class="key--big" title="Tecla 7">7</kbd>
+            </header>
+            <div class="tool-body">
+              <p>Arriba se elige: <strong>Árboles</strong>, <strong>Público</strong> o <strong>Estructuras</strong>.</p>
+
+              <div class="sub-card">
+                <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-tree"/></svg> Árboles</h4>
+                <ul>
+                  <li>Una imagen 2D puesta dos veces en X (dos planos cruzados) para que parezca 3D desde cualquier lado.</li>
+                  <li>De serie: <strong>Pino, Frondoso, Palmera, Arbusto</strong>. <em>Importar PNG…</em> para los tuyos (fondo transparente). <em>Mezcla</em> = tipo al azar.</li>
+                  <li>Pintar arrastrando (reparte en el <span class="dot dot--green" aria-hidden="true"></span>círculo verde respetando la <em>Separación</em>) o clic a clic. Modo <strong>Borrar</strong> (<span class="dot dot--red" aria-hidden="true"></span>círculo rojo).</li>
+                  <li><strong>Altura</strong> y <strong>Variación</strong>. <em>No poner sobre pistas ni muros</em> activado por defecto.</li>
+                </ul>
+              </div>
+
+              <div class="sub-card">
+                <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-users"/></svg> Público</h4>
+                <ul>
+                  <li>Igual que los árboles, con personas (6 de serie o tus PNG).</li>
+                  <li>Cada persona mira hacia la pista más cercana.</li>
+                  <li>Se pueden pintar encima de las gradas (quedan en los escalones).</li>
+                </ul>
+              </div>
+
+              <div class="sub-card">
+                <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-building"/></svg> Estructuras</h4>
+                <p>Se abre una ventana-catálogo con vista previa 3D girando.</p>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th scope="col">Estructura</th><th scope="col">Opciones</th></tr></thead>
+                    <tbody>
+                      <tr><td>Edificio</td><td>Pisos, ancho, fondo, color de fachada.</td></tr>
+                      <tr><td>Casa</td><td>Plantas, ancho, fondo, color; tejado a dos aguas.</td></tr>
+                      <tr><td>Gasolinera</td><td>Nº de surtidores; marquesina, tienda y explanada asfaltada.</td></tr>
+                      <tr><td>Fuente</td><td>Radio; con plaza de piedra.</td></tr>
+                      <tr><td>Rotonda</td><td>Radio de la isleta, ancho de calzada, largo de salidas y qué salidas tiene (rosa de 8 direcciones: N, NE, E, SE, S, SO, O, NO).</td></tr>
+                      <tr><td>Grada</td><td>Largo, filas, tejadillo.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul>
+                  <li><strong>Rotonda:</strong> se genera por código: calzada (<code>ROAD</code>), piano rojo/blanco en la isleta (<code>KERB</code>), césped (<code>GRASS</code>). El final de cada salida imanta las pistas.</li>
+                  <li><strong>Importadas de Blender:</strong> <em>Importar .glb</em> las añade a una biblioteca guardada dentro del proyecto; se centran y apoyan solas. Objetos llamados <code>ROAD</code>, <code>KERB</code>, <code>GRASS</code> o <code>WALL</code> llevan esa física; el resto choca como muro o nada (opción <em>Los coches chocan con él</em>). Más de 150 000 triángulos → aviso de revisar el modelo.</li>
+                </ul>
+                <h4>Colocar</h4>
+                <ul>
+                  <li><em>Colocar en el mapa</em> y clic (varias seguidas). Clic derecho termina.</li>
+                  <li><kbd>R</kbd> / <kbd>Shift</kbd>+<kbd>R</kbd> gira 15°; Giro y Escala en el panel.</li>
+                  <li><em>Aplanar el terreno debajo</em> (activado).</li>
+                  <li>Clic en una colocada para elegirla: girar, escalar, <strong>Mover</strong> o <strong>Eliminar</strong> (<kbd>Supr</kbd>). <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace.</li>
+                </ul>
+              </div>
+              <!-- PENDIENTE: captura de la herramienta Decoración -->
+              <figure class="shot">
+                <div class="placeholder" role="img" aria-label="Marcador: captura del catálogo de estructuras (pendiente)">
+                  <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+                  <strong>Captura: catálogo de estructuras</strong><span>Pendiente · 16:9</span>
+                </div>
+                <figcaption>Ventana-catálogo con la vista previa 3D de una rotonda.</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <!-- IMPORTAR -->
+          <article class="tool-card" id="h-importar" aria-labelledby="t-importar">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-import"/></svg></div>
+              <h3 id="t-importar">Importar</h3>
+              <kbd class="key--big" title="Tecla 8">8</kbd>
+            </header>
+            <div class="tool-body">
+              <p>Trae el relieve real desde un mapa (con imagen de satélite), un modelo de Blender (<code>.glb</code>/<code>.gltf</code>), o imágenes PNG para árboles y público.</p>
+              <p><a class="btn btn--ghost" href="#importar"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>Ir a la guía completa: Importar relieve</a></p>
+            </div>
+          </article>
+
+          <!-- EXPORTAR -->
+          <article class="tool-card" id="h-exportar" aria-labelledby="t-exportar">
+            <header class="tool-head">
+              <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-export"/></svg></div>
+              <h3 id="t-exportar">Exportar AC</h3>
+              <kbd class="key--big" title="Tecla 9">9</kbd>
+            </header>
+            <div class="tool-body">
+              <p>Genera el <code>.kn5</code> y todos los archivos de datos directamente en la carpeta del juego.</p>
+              <p><a class="btn btn--ghost" href="#exportar"><svg class="icon" aria-hidden="true"><use href="#i-export"/></svg>Ir a la guía completa: Exportar a AC</a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       IMPORTAR RELIEVE
+       ========================================================= -->
+  <section class="section section--alt" id="importar" aria-labelledby="titulo-importar" data-nav="importar">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Herramienta <kbd>8</kbd></span>
+        <h2 id="titulo-importar">Importar relieve</h2>
+        <p class="lead">Condiciones y requisitos para cada tipo de importación.</p>
+      </div>
+
+      <!-- A) GIS -->
+      <article class="import-block" id="importar-mapa" aria-labelledby="imp-a">
+        <header>
+          <span class="import-letter" aria-hidden="true">A</span>
+          <h3 id="imp-a">Mapa real (GIS) — sin Blender</h3>
+        </header>
+        <div class="import-body">
+          <ol class="steps">
+            <li><strong>Abrir el mapa</strong><em>Elegir zona en el mapa…</em> abre un mapa de OpenStreetMap a pantalla completa.</li>
+            <li><strong>Buscar</strong>Por nombre («Montjuïc, Barcelona») o coordenadas («28.27, -16.64»).</li>
+            <li><strong>Marcar la zona</strong>
+              <div class="table-wrap" style="margin-top:8px">
+                <table>
+                  <thead><tr><th scope="col">Control</th><th scope="col">Acción</th></tr></thead>
+                  <tbody>
+                    <tr><td>Arrastrar con botón izquierdo</td><td>Marcar zona</td></tr>
+                    <tr><td>Botón derecho o rueda pulsada</td><td>Mover</td></tr>
+                    <tr><td>Rueda</td><td>Zoom</td></tr>
+                    <tr><td><kbd>Esc</kbd></td><td>Cerrar</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li><strong>Imagen de satélite</strong>
+              <ul>
+                <li><strong>Automática:</strong> PNOA del IGN si el centro está en España (incluidas Baleares y Canarias); Esri fuera; lo que PNOA no tenga se pide a Esri.</li>
+                <li><strong>PNOA</strong>, <strong>Esri</strong> o <strong>Sin imagen</strong>.</li>
+              </ul>
+            </li>
+            <li><strong>Revisar</strong>La barra inferior muestra tamaño, resolución del relieve y de la imagen y teselas a descargar.</li>
+            <li><strong>Descargar relieve de la zona</strong>Descarga, genera un <code>.glb</code> y lo importa en modo <em>Convertir en terreno</em>.</li>
+          </ol>
+
+          <div class="table-wrap">
+            <table>
+              <caption>Resolución según el tamaño de la zona</caption>
+              <thead><tr><th scope="col">Zona</th><th scope="col">Relieve</th><th scope="col">Imagen</th></tr></thead>
+              <tbody>
+                <tr><td>~3 km</td><td>un punto cada ~7 m</td><td>~0,9 m/píxel</td></tr>
+                <tr><td>~9 km</td><td>~8 m</td><td>~2 m/píxel</td></tr>
+                <tr><td>~40 km</td><td>~130 m</td><td>~17 m/píxel</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Límites</h4>
+          <ul>
+            <li>Mínimo <strong>300 m</strong> de lado.</li>
+            <li>Máximo <strong>1 millón de puntos</strong> de relieve (≈100 km de lado según latitud) y <strong>25 megapíxeles</strong> de imagen.</li>
+            <li>Fondo del mar recortado a <strong>−60 m</strong>.</li>
+            <li>Las teselas se guardan en caché (repetir zona es casi inmediato).</li>
+          </ul>
+
+          <div class="callout callout--warn">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><span class="callout-title">Licencia de las imágenes</span>
+              <p>La imagen de <strong>Esri</strong> es solo para uso personal: <strong>no publiques circuitos con ella</strong>. <strong>PNOA</strong> (CC BY 4.0) sí se puede publicar citando la fuente.</p></div>
+          </div>
+
+          <!-- PENDIENTE: captura del mapa de selección de zona -->
+          <figure class="shot">
+            <div class="placeholder" role="img" aria-label="Marcador: captura del mapa de OpenStreetMap con una zona marcada (pendiente)">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <strong>Captura: elegir zona en el mapa</strong><span>Pendiente · 16:9</span>
+            </div>
+            <figcaption>Mapa a pantalla completa con la zona marcada y la barra inferior de datos.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- B) Blender -->
+      <article class="import-block" id="importar-blender" aria-labelledby="imp-b">
+        <header>
+          <span class="import-letter" aria-hidden="true">B</span>
+          <h3 id="imp-b">Modelo de Blender (.glb / .gltf)</h3>
+        </header>
+        <div class="import-body">
+          <h4 style="margin-top:0">Lista de comprobación al exportar desde Blender</h4>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Archivo &gt; Exportar &gt; <strong>glTF 2.0 (.glb)</strong>.</span></label></li>
+            <li><label><input type="checkbox"><span>Opción <strong>+Y arriba</strong> activada.</span></label></li>
+            <li><label><input type="checkbox"><span><strong>Escala aplicada</strong> (<kbd>Ctrl</kbd>+<kbd>A</kbd> &gt; Escala) y a <strong>escala 1:1 en metros</strong>.</span></label></li>
+            <li><label><input type="checkbox"><span>Menos de <strong>3 millones de triángulos</strong> recomendado (máximo absoluto 25 millones). Si pesa mucho: modificador <strong>Decimate</strong> o importar el DEM con menos resolución. No hace falta unir las piezas ni hacer remesh (el remesh pierde las texturas).</span></label></li>
+            <li><label><input type="checkbox"><span>Texturas de máximo <strong>4096 × 4096</strong> cada una.</span></label></li>
+          </ul>
+
+          <p>Al elegir el archivo, el editor revisa el modelo y muestra un informe <span class="tag tag--ok">OK</span> / <span class="tag tag--warn">AVISO</span> / <span class="tag tag--error">ERROR</span>.</p>
+          <div class="table-wrap">
+            <table>
+              <caption>Comprobaciones del modelo</caption>
+              <thead><tr><th scope="col">Comprobación</th><th scope="col">Resultado</th></tr></thead>
+              <tbody>
+                <tr><td>No es glTF válido, no se puede abrir o no tiene mallas</td><td><span class="tag tag--error">ERROR</span></td></tr>
+                <tr><td>Más de 25 millones de triángulos</td><td><span class="tag tag--error">ERROR</span></td></tr>
+                <tr><td>Más alto que ancho (altura &gt; 40 % del lado mayor): eje vertical girado</td><td><span class="tag tag--error">ERROR</span> → exportar con «+Y arriba»</td></tr>
+                <tr><td>Más de 3 millones de triángulos</td><td><span class="tag tag--warn">AVISO</span> (tardará y el circuito pesará mucho)</td></tr>
+                <tr><td>Archivo de más de 300 MB</td><td><span class="tag tag--warn">AVISO</span></td></tr>
+                <tr><td>Texturas de más de 512 MB en memoria</td><td><span class="tag tag--warn">AVISO</span> (máx. 4096×4096)</td></tr>
+                <tr><td>Mide menos de 100 m</td><td><span class="tag tag--warn">AVISO</span> (¿escala 1:1 en metros?)</td></tr>
+                <tr><td>Mide más de 200 km</td><td><span class="tag tag--warn">AVISO</span> (¿centímetros o escala sin aplicar?)</td></tr>
+                <tr><td>Desnivel de más de 6000 m</td><td><span class="tag tag--warn">AVISO</span> (el Teide mide 3715 m)</td></tr>
+                <tr><td>Zonas a más de 500 m bajo el nivel del mar</td><td><span class="tag tag--warn">AVISO</span></td></tr>
+                <tr><td>A más de 10 km del origen</td><td><span class="tag tag--warn">AVISO</span>: se recentra solo</td></tr>
+                <tr><td>Con texturas</td><td><span class="tag tag--ok">OK</span>: se pueden usar como imagen de satélite</td></tr>
+                <tr><td>Sin texturas</td><td><span class="tag tag--ok">OK</span>: se pinta con colores por altura y pendiente</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout--warn">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><span class="callout-title">Si hay avisos</span>
+              <p>Sale la alerta <strong>«Revisar modelo»</strong> con <em>Importar igualmente</em> o <em>Cancelar</em>.</p></div>
+          </div>
+          <div class="callout callout--error">
+            <svg class="icon" aria-hidden="true"><use href="#i-error"/></svg>
+            <div><span class="callout-title">Si hay errores</span>
+              <p>No deja importar. Corrige el modelo en Blender y vuelve a exportarlo.</p></div>
+          </div>
+
+          <h4>Dos modos de importación</h4>
+          <div class="mode-cards">
+            <div class="card">
+              <h4>Convertir en terreno</h4>
+              <p>Relieve base + zonas de detalle editables (pinceles, túneles). Opción de usar sus texturas como satélite.</p>
+            </div>
+            <div class="card">
+              <h4>Modelo tal cual</h4>
+              <p>Conserva el detalle y las texturas de Blender; las herramientas de terreno <strong>no</strong> lo modifican.</p>
+            </div>
+          </div>
+
+          <p><strong>Con relieve cargado:</strong> Ver el relieve completo, Mostrar el mar, Nivel del mar (−50 a 50 m), Quitar relieve importado.</p>
+
+          <!-- PENDIENTE: captura del informe de revisión del modelo -->
+          <figure class="shot">
+            <div class="placeholder" role="img" aria-label="Marcador: captura del informe de revisión de un modelo de Blender (pendiente)">
+              <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+              <strong>Captura: informe «Revisar modelo»</strong><span>Pendiente · 16:9</span>
+            </div>
+            <figcaption>Informe OK / AVISO / ERROR al elegir un archivo .glb.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <div class="grid grid--2">
+        <!-- C) PNG -->
+        <article class="import-block" id="importar-png" aria-labelledby="imp-c" style="margin-bottom:0">
+          <header>
+            <span class="import-letter" aria-hidden="true">C</span>
+            <h3 id="imp-c">Imágenes PNG para árboles y público</h3>
+          </header>
+          <div class="import-body">
+            <ul>
+              <li>PNG (o WebP) con <strong>fondo transparente</strong>; si no tiene transparencia, avisa porque se verá el fondo.</li>
+              <li>Se reducen solas a <strong>1024 px</strong> como máximo por lado.</li>
+              <li><strong>Árbol:</strong> de pie, la base abajo en el centro.</li>
+              <li><strong>Persona:</strong> de frente.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- D) Estructuras -->
+        <article class="import-block" id="importar-estructuras" aria-labelledby="imp-d" style="margin-bottom:0">
+          <header>
+            <span class="import-letter" aria-hidden="true">D</span>
+            <h3 id="imp-d">Estructuras desde Blender</h3>
+          </header>
+          <div class="import-body">
+            <ul>
+              <li><code>.glb</code>/<code>.gltf</code> exportado en metros. Se centra y apoya en el suelo automáticamente.</li>
+              <li>Nombres de objeto con <code>ROAD</code>, <code>KERB</code>, <code>GRASS</code> o <code>WALL</code> → esa física en el juego.</li>
+              <li>Más de <strong>150 000 triángulos</strong> → aviso (pesado para repetirlo; usar Decimate).</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       EXPORTAR A AC
+       ========================================================= -->
+  <section class="section" id="exportar" aria-labelledby="titulo-exportar" data-nav="exportar">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Herramienta <kbd>9</kbd></span>
+        <h2 id="titulo-exportar">Exportar a Assetto Corsa</h2>
+        <p class="lead">El circuito va directo a la carpeta del juego: el <code>.kn5</code> y todos los archivos de datos.</p>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <div>
+          <ol class="steps">
+            <li><strong>Datos del circuito</strong>Nombre, Carpeta (se genera sola), País, Ciudad, Autor.</li>
+            <li><strong>Destino</strong><em>Buscar AC</em> encuentra <code>content/tracks</code> en Steam; si no, <em>Elegir…</em>.</li>
+            <li><strong>Orientación</strong><em>Girar 180° parrilla y boxes</em> si en el juego los coches salen mirando hacia atrás.</li>
+            <li><strong>Exportar a Assetto Corsa</strong>Pulsa el botón y listo.</li>
+          </ol>
+          <div class="callout callout--ok">
+            <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <div><span class="callout-title">Seguridad</span>
+              <p>Nunca sobrescribe un circuito que no haya creado AC Tracker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
+          </div>
+        </div>
+        <div>
+          <h3>Archivos generados</h3>
+<pre aria-label="Árbol de archivos generado"><code><span class="d">content/tracks/&lt;carpeta&gt;/</span>
+├── <span class="f">&lt;carpeta&gt;.kn5</span>      <span class="c">Modelo 3D (kn5 v5, texturas DDS)</span>
+├── <span class="f">map.png</span>            <span class="c">Mapa del trazado</span>
+├── <span class="f">ac_tracker.txt</span>     <span class="c">Marca: solo se sobrescriben carpetas creadas por el editor</span>
+├── <span class="d">data/</span>
+│   ├── <span class="f">surfaces.ini</span>   <span class="c">Superficies ROAD, KERB, GRASS y WALL</span>
+│   └── <span class="f">map.ini</span>
+└── <span class="d">ui/</span>
+    ├── <span class="f">ui_track.json</span>  <span class="c">Nombre, país, ciudad, autor, longitud, ancho, nº de boxes</span>
+    ├── <span class="f">outline.png</span>
+    └── <span class="f">preview.png</span>    <span class="c">Captura de la vista 3D sin la interfaz</span></code></pre>
+        </div>
+      </div>
+
+      <details class="curious">
+        <summary><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Para curiosos: detalles técnicos</summary>
+        <ul>
+          <li>Piezas de menos de <strong>65 000 vértices</strong> (índices de 16 bits del kn5).</li>
+          <li>El relieve a menos de <strong>300 m</strong> de una pista lleva colisión.</li>
+          <li>El relieve se simplifica con la distancia a las pistas: mitad de detalle a partir de <strong>1 km</strong>, otra vez a <strong>4 km</strong> y a <strong>10 km</strong>.</li>
+          <li>Árboles y público con shader <code>ksPerPixelAT</code> y texturas DXT5, en piezas de <strong>250 m</strong> y sin colisión.</li>
+          <li>Aviso si el circuito pasa de <strong>3 millones de triángulos</strong>.</li>
+        </ul>
+      </details>
+
+      <!-- PENDIENTE: captura del panel de exportación -->
+      <figure class="shot">
+        <div class="placeholder" role="img" aria-label="Marcador: captura del panel Exportar AC (pendiente)">
+          <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+          <strong>Captura: panel Exportar AC</strong><span>Pendiente · 16:9</span>
+        </div>
+        <figcaption>Datos del circuito, destino y botón «Exportar a Assetto Corsa».</figcaption>
+      </figure>
+      <!-- PENDIENTE: captura del circuito dentro de Assetto Corsa -->
+      <figure class="shot">
+        <div class="placeholder" role="img" aria-label="Marcador: captura del circuito exportado funcionando en Assetto Corsa (pendiente)">
+          <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+          <strong>Captura: el circuito en el juego</strong><span>Pendiente · 16:9</span>
+        </div>
+        <figcaption>El circuito exportado, ya en Assetto Corsa.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ATAJOS
+       ========================================================= -->
+  <section class="section section--alt" id="atajos" aria-labelledby="titulo-atajos" data-nav="atajos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Teclado y ratón</span>
+        <h2 id="titulo-atajos">Atajos de teclado</h2>
+        <p class="lead">En el editor, pulsa <kbd>F1</kbd> para verlos.</p>
+      </div>
+      <div class="grid grid--2" style="align-items:start">
+        <div class="table-wrap" style="margin-top:0">
+          <table>
+            <caption>Editor</caption>
+            <thead><tr><th scope="col">Tecla</th><th scope="col">Acción</th></tr></thead>
+            <tbody>
+              <tr><td class="nowrap"><kbd>1</kbd> … <kbd>9</kbd>, <kbd>0</kbd></td><td>Trazado, Muros, Elevaciones, Quitar suelo, Túneles, Spawns, Decoración, Importar, Exportar AC, Archivo</td></tr>
+              <tr><td class="nowrap"><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Deshacer en la herramienta activa</td></tr>
+              <tr><td>Clic derecho / <kbd>Esc</kbd></td><td>Terminar o cancelar</td></tr>
+              <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar / Guardar como</td></tr>
+              <tr><td class="nowrap"><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Abrir proyecto</td></tr>
+              <tr><td class="nowrap"><kbd>N</kbd> o <kbd>Tab</kbd></td><td>Mostrar u ocultar el panel</td></tr>
+              <tr><td class="nowrap"><kbd>F1</kbd></td><td>Atajos de teclado</td></tr>
+              <tr><td class="nowrap"><kbd>R</kbd> / <kbd>Shift</kbd>+<kbd>R</kbd></td><td>Decoración: girar la estructura 15°</td></tr>
+              <tr><td class="nowrap"><kbd>Supr</kbd></td><td>Decoración: quitar la estructura elegida</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="table-wrap" style="margin-top:0">
+            <table>
+              <caption>Cámara</caption>
+              <thead><tr><th scope="col">Control</th><th scope="col">Acción</th></tr></thead>
+              <tbody>
+                <tr><td class="nowrap"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Moverse en horizontal</td></tr>
+                <tr><td class="nowrap"><kbd>E</kbd> / <kbd>Q</kbd></td><td>Subir / bajar</td></tr>
+                <tr><td class="nowrap"><kbd>Shift</kbd></td><td>Más rápido</td></tr>
+                <tr><td>Rueda pulsada + mover</td><td>Girar alrededor del punto del suelo que hay bajo la mira «+»</td></tr>
+                <tr><td>Rueda</td><td>Acercar / alejar hacia ese punto</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Consejo</span>
+              <p>La velocidad se adapta a la distancia al suelo. Con <kbd>Ctrl</kbd> pulsado la cámara no se mueve (para que <kbd>Ctrl</kbd>+<kbd>S</kbd> no la desplace).</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archivos del editor -->
+      <div id="archivos" style="margin-top:40px">
+        <h3 style="font-size:1.6rem;font-style:italic;text-transform:uppercase">Archivos que crea el editor</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Archivo</th><th scope="col">Dónde</th><th scope="col">Qué es</th></tr></thead>
+            <tbody>
+              <tr><td><code>*.actrack</code></td><td>Donde elijas</td><td>Proyecto (binario comprimido; se lee sin permitir objetos, un archivo manipulado no puede ejecutar código).</td></tr>
+              <tr><td><code>ajustes.cfg</code></td><td>Datos de usuario</td><td>Carpeta de AC, datos de exportación, recientes, autoguardado, última vista del mapa.</td></tr>
+              <tr><td><code>autoguardado.actrack</code> / <code>autoguardado_sesion_anterior.actrack</code></td><td>Datos de usuario</td><td>Copias automáticas.</td></tr>
+              <tr><td><code>relieves_gis/zona_&lt;fecha&gt;.glb</code> + <code>.json</code></td><td>Datos de usuario</td><td>Relieves descargados (~10–35 MB). <strong>No borrar si un proyecto los usa.</strong></td></tr>
+              <tr><td><code>cache_gis/</code></td><td>Datos de usuario</td><td>Teselas descargadas; se puede borrar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--tip">
+          <svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg>
+          <div><span class="callout-title">Datos de usuario en Windows</span>
+            <p><code>%APPDATA%\Godot\app_userdata\AC_tracker\</code></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PREGUNTAS FRECUENTES
+       ========================================================= -->
+  <section class="section" id="faq" aria-labelledby="titulo-faq" data-nav="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Dudas habituales</span>
+        <h2 id="titulo-faq">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">¿Necesito saber Blender?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-1" role="region" aria-labelledby="faq-1-btn" hidden>
+            <p>No. Con <em>Elegir zona en el mapa…</em> (herramienta Importar) el editor descarga el relieve real de la zona que marques. Blender es opcional: solo si quieres usar tu propio relieve o tus estructuras.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">¿Por qué no puedo modificar el terreno en una zona?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-2" role="region" aria-labelledby="faq-2-btn" hidden>
+            <p>Solo se edita el <strong>terreno de detalle</strong>; el relieve base no se edita. Crea detalle en esa zona con Elevaciones → <em>Detalle editable</em> (pinta la zona o usa <em>Pintar a lo largo de las pistas</em>) y pulsa <em>Aplicar</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">Los pinceles no hacen nada sobre el relieve importado en modo «tal cual».<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-3" role="region" aria-labelledby="faq-3-btn" hidden>
+            <p>Es lo esperado: en modo <em>Modelo tal cual</em> las herramientas de terreno no modifican el modelo. Si quieres editarlo, vuelve a importarlo en modo <em>Convertir en terreno</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">Mi modelo de Blender da error de eje vertical.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-4" role="region" aria-labelledby="faq-4-btn" hidden>
+            <p>El modelo sale más alto que ancho (altura mayor del 40 % del lado mayor), así que el eje vertical está girado. Vuelve a exportarlo desde Blender con la opción <strong>+Y arriba</strong> activada.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">El modelo pesa mucho / sale la alerta «Revisar modelo».<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-5" role="region" aria-labelledby="faq-5-btn" hidden>
+            <p>Reduce los triángulos con el modificador <strong>Decimate</strong> (o importa el DEM con menos resolución) y deja las texturas en <strong>4096 × 4096</strong> como máximo. No hagas remesh: pierde las texturas. Si solo hay avisos, puedes elegir <em>Importar igualmente</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn">El túnel sale en rojo.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-6" role="region" aria-labelledby="faq-6-btn" hidden>
+            <p>Falta montaña: hacen falta <strong>3 m de montaña sobre el techo</strong> del túnel. Cambia la orientación o el punto de la boca, o levanta el terreno con los pinceles de Elevaciones.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn">En el juego los coches salen mirando hacia atrás.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-7" role="region" aria-labelledby="faq-7-btn" hidden>
+            <p>Activa <em>Girar 180° parrilla y boxes</em> en Exportar AC y vuelve a exportar.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-8" id="faq-8-btn">¿Cuántos coches caben?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-8" role="region" aria-labelledby="faq-8-btn" hidden>
+            <p>Tantos como boxes. Hace falta al menos uno; colócalos con la herramienta Spawns.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-9" id="faq-9-btn">¿Sobrescribe mis otros circuitos?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-9" role="region" aria-labelledby="faq-9-btn" hidden>
+            <p>No. Solo sobrescribe carpetas que contienen <code>ac_tracker.txt</code>, es decir, creadas por el editor. Si la carpeta existe sin esa marca, se niega y pide otro nombre.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn">He movido el .glb del relieve y el proyecto abre sin él.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-10" role="region" aria-labelledby="faq-10-btn" hidden>
+            <p>El relieve no va dentro del proyecto: se guarda la ruta a su <code>.glb</code> y se reimporta al abrir. Vuelve a ponerlo en su ruta y abre el proyecto de nuevo.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn">¿Puedo publicar un circuito con imagen de satélite?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-11" role="region" aria-labelledby="faq-11-btn" hidden>
+            <p>Con <strong>PNOA</strong> (CC BY 4.0) sí, citando la fuente. Con <strong>Esri</strong> no: es solo para uso personal. Consulta los <a href="#creditos">créditos</a>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn">¿Se pierde el trabajo si se cierra?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-12" role="region" aria-labelledby="faq-12-btn" hidden>
+            <p>El autoguardado se hace cada 1–15 min (3 por defecto) y al cerrar. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>. Ojo: lo pintado en rojo sin aplicar en Detalle editable no se guarda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limitaciones -->
+  <section class="section section--alt" id="limitaciones" aria-labelledby="titulo-limites" data-nav="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Con sinceridad</span>
+        <h2 id="titulo-limites">Limitaciones conocidas</h2>
+      </div>
+      <ul class="limits">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El relieve descargado suele tener ~30 m de resolución real: cunetas y taludes hay que modelarlos con los pinceles sobre el detalle de 2 m.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Una zona del mapa usa una sola fuente de imagen, decidida por su centro.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El fondo del mar se recorta a −60 m.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La imagen se ve a ~0,8 m/píxel junto a la carretera aunque la fuente tenga más.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El proyecto depende del <code>.glb</code> del relieve.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Lo pintado en rojo sin aplicar no se guarda.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Deshacer una estructura no deshace el aplanado del terreno (se deshace en Elevaciones). Sobre relieve sin detalle editable no se aplana.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Proyecto en desarrollo: algunos aspectos (orientación de spawns, rendimiento de circuitos muy grandes) pueden necesitar ajustes al probarlos en el juego.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CRÉDITOS
+       ========================================================= -->
+  <section class="section" id="creditos" aria-labelledby="titulo-creditos" data-nav="creditos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Fuentes y licencias</span>
+        <h2 id="titulo-creditos">Créditos y licencias</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Fuente</th><th scope="col">Para qué</th><th scope="col">Condiciones</th><th scope="col">Crédito</th></tr></thead>
+          <tbody>
+            <tr><td><strong>OpenStreetMap</strong></td><td>Mapa y buscador (Nominatim)</td><td>ODbL, uso ligero</td><td>«© OpenStreetMap contributors»</td></tr>
+            <tr><td><strong>Terrain Tiles</strong> (Mapzen / AWS Open Data)</td><td>Relieve</td><td>Datos abiertos; atribución según región</td><td>En España: Copernicus EU-DEM (UE) y SRTM (USGS)</td></tr>
+            <tr><td><strong>PNOA</strong> (IGN)</td><td>Satélite en España</td><td>CC BY 4.0</td><td>«PNOA cedido por © Instituto Geográfico Nacional»</td></tr>
+            <tr><td><strong>Esri World Imagery</strong></td><td>Satélite fuera de España</td><td>Solo uso personal</td><td>«Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community»</td></tr>
+            <tr><td><strong>Godot Engine</strong></td><td>Motor</td><td>MIT</td><td>Incluir su licencia si se distribuye</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout--tip">
+        <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+        <div><span class="callout-title">Al publicar</span>
+          <p>Si publicas un circuito hecho con datos reales, pon los créditos en su descripción.</p></div>
+      </div>
+      <p class="muted"><svg class="icon" aria-hidden="true" style="width:18px;height:18px;vertical-align:-4px;stroke:#9a9ca5"><use href="#i-scale"/></svg> Esto es orientativo, no asesoría legal.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="kerb" aria-hidden="true"></div>
+  <div class="container">
+    <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
+    <p>Editor de circuitos para Assetto Corsa · Hecho con Godot 4.6 · Proyecto en desarrollo.</p>
+    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+  <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
