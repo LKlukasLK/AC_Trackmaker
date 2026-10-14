@@ -1000,3 +1000,6 @@ details.curious > ul { padding-bottom: 8px; }
   .steps > li { padding-left: 52px; }
   .to-top { right: 16px; bottom: 16px; }
 }
+
+.badge--green { color: var(--green); border-color: rgba(76, 201, 122, 0.45); }
+.badge--green .icon { stroke: var(--green); }

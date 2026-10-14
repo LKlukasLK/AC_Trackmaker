@@ -7,5 +7,8 @@ eligiendo la carpeta `/docs` de la rama principal.
 
 ## Licencia
 
-[MIT](LICENSE). La tipografía Barlow incluida en `docs/fonts/` tiene su propia
+El código de esta web se publica bajo licencia [MIT](LICENSE). Esta licencia **no**
+se aplica al programa AC Tracker, que es gratuito con todos los derechos reservados.
+
+La tipografía Barlow incluida en `docs/fonts/` tiene su propia
 licencia (SIL Open Font License 1.1, ver `docs/fonts/OFL-Barlow.txt`).

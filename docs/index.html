@@ -88,8 +88,9 @@
         <h1 id="titulo-inicio">AC <span>Tracker</span></h1>
         <p class="tagline">De una idea a un circuito jugable en Assetto Corsa, sin pasar por 3ds Max ni Blender.</p>
         <p class="lead">Programa de escritorio para <strong>Windows</strong> para crear circuitos de <strong>Assetto Corsa</strong> sin modelar en 3D: dibujas la carretera, modelas el terreno, pones muros, túneles, decoración y spawns, y lo <strong>exportas directamente</strong> a la carpeta del juego (el <code>.kn5</code> y todos los archivos de datos).</p>
-        <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con imagen de satélite), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
+        <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con ortofotos oficiales con licencia abierta), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
         <ul class="badges" aria-label="Datos del proyecto">
+          <li class="badge badge--green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratis</li>
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</li>
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-import"/></svg>Descarga en .exe</li>
           <li class="badge badge--amber"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Proyecto en desarrollo</li>
@@ -144,8 +145,8 @@
         <article class="card feature">
           <span class="feature-num" aria-hidden="true">02</span>
           <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
-          <h3>Relieve real con satélite</h3>
-          <p>Trae el relieve del mapa con imagen de satélite: Tenerife 1:1, una sierra, tu pueblo…</p>
+          <h3>Relieve real con ortofotos</h3>
+          <p>Trae el relieve real del mapa con ortofotos oficiales con licencia abierta (España, Francia, Suiza, Países Bajos, Austria, EE. UU.) y Sentinel-2 en el resto del mundo: Tenerife 1:1, una sierra, tu pueblo…</p>
         </article>
         <article class="card feature">
           <span class="feature-num" aria-hidden="true">03</span>
@@ -192,8 +193,8 @@
         <div class="panel">
           <h3>Requisitos</h3>
           <ul>
-            <li><strong>Windows.</strong></li>
-            <li>Tarjeta gráfica compatible con <strong>DirectX 12</strong>.</li>
+            <li><strong>Windows 10 u 11 de 64 bits.</strong></li>
+            <li>Tarjeta gráfica compatible con <strong>DirectX 12</strong>, <strong>Vulkan</strong> u <strong>OpenGL 3.3</strong>. El programa usa DirectX 12 y, si el equipo no lo tiene, pasa solo a Vulkan o a OpenGL 3.3 (modo compatibilidad). No hace falta configurar nada.</li>
             <li><strong>Internet</strong> solo para el mapa real (relieve, imágenes y buscador).</li>
             <li><strong>Assetto Corsa</strong> instalado para exportar directamente al juego.</li>
           </ul>
@@ -202,9 +203,15 @@
           <h3>Puesta en marcha</h3>
           <ol class="steps steps--compact">
             <li><strong>Descarga</strong> el archivo <code>.exe</code> (<a href="#inicio">enlace en la portada</a>).</li>
-            <li><strong>Ábrelo</strong> con doble clic.</li>
+            <li><strong>Ábrelo</strong> con doble clic: es un único archivo, no hay que instalar nada.</li>
+            <li>La primera vez sale la ventana <strong>«Términos de uso y aviso legal»</strong>: léela y pulsa <strong>Aceptar</strong>.</li>
             <li>Sigue el <a href="#como-funciona">flujo de trabajo</a> para crear tu primer circuito.</li>
           </ol>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Aviso de SmartScreen</span>
+              <p>Como el <code>.exe</code> no está firmado digitalmente, Windows puede mostrar el aviso de SmartScreen: pulsa <strong>Más información</strong> → <strong>Ejecutar de todas formas</strong>.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -237,7 +244,7 @@
         <dl class="def-list">
           <div>
             <dt>Barra superior</dt>
-            <dd>Las herramientas (Archivo primero, luego Trazado… Exportar AC), la ayuda (<kbd>F1</kbd>) y el botón para ocultar el panel (<kbd>N</kbd>). Si la ventana es estrecha, solo se ven los iconos (el nombre sale al pasar el ratón).</dd>
+            <dd>Las herramientas (Archivo primero, luego Trazado… Exportar AC), el botón de la balanza (Términos de uso, aviso legal y licencias), la ayuda (<kbd>F1</kbd>) y el botón para ocultar el panel (<kbd>N</kbd>). Si la ventana es estrecha, solo se ven los iconos (el nombre sale al pasar el ratón).</dd>
           </div>
           <div>
             <dt>Vista 3D</dt>
@@ -420,6 +427,7 @@
                 <li><strong>Guardar</strong> (<kbd>Ctrl</kbd>+<kbd>S</kbd>) y <strong>Guardar como</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>): archivo <code>.actrack</code>. Se escribe primero en un temporal y luego se renombra: un fallo nunca estropea el archivo anterior.</li>
                 <li><strong>Abrir</strong> (<kbd>Ctrl</kbd>+<kbd>O</kbd>), <strong>recientes</strong> (los 6 últimos), <strong>Nuevo proyecto</strong> (pide confirmación).</li>
                 <li><strong>Autoguardado</strong> cada 1–15 min (3 por defecto) y al cerrar. Va aparte y nunca sobrescribe tu proyecto. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>.</li>
+                <li><strong>Legal:</strong> sección del panel con el aviso de copyright (programa gratuito, todos los derechos reservados; no afiliado a Kunos Simulazioni ni a 505 Games) y el botón <em>Términos de uso, aviso legal y licencias</em>.</li>
               </ul>
               <div class="split">
                 <div class="callout callout--ok" style="margin:0">
@@ -510,7 +518,7 @@
                 </table>
               </div>
               <ul>
-                <li><strong>Ajustes:</strong> altura, grosor, suavizado y color.</li>
+                <li><strong>Ajustes:</strong> altura 0,5–10 m, grosor 0,2–3 m, suavizado y color. Al anclar a la pista: <em>Separación del borde</em> 0–15 m.</li>
                 <li><kbd>Ctrl</kbd>+<kbd>Z</kbd>: último punto o último muro.</li>
               </ul>
               <!-- PENDIENTE: captura de la herramienta Muros -->
@@ -535,15 +543,15 @@
               <div class="callout callout--tip" style="margin-top:0">
                 <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
                 <div><span class="callout-title">Importante</span>
-                  <p>Solo actúan sobre el <strong>terreno de detalle</strong>. El <span class="dot dot--yellow" aria-hidden="true"></span>círculo amarillo indica el radio.</p></div>
+                  <p>Solo actúan sobre el <strong>terreno de detalle</strong>. El <span class="dot dot--yellow" aria-hidden="true"></span>círculo amarillo indica el radio (5–150 m).</p></div>
               </div>
               <h4>Pinceles</h4>
               <div class="table-wrap">
                 <table>
                   <thead><tr><th scope="col">Pincel</th><th scope="col">Uso</th></tr></thead>
                   <tbody>
-                    <tr><td>Montaña</td><td>Clic; altura 5–150 m y rugosidad.</td></tr>
-                    <tr><td>Subir / Bajar</td><td>Mantener y arrastrar; fuerza en m/s.</td></tr>
+                    <tr><td>Montaña</td><td>Clic; altura 5–150 m y rugosidad 0–1.</td></tr>
+                    <tr><td>Subir / Bajar</td><td>Mantener y arrastrar; fuerza 1–40 m/s.</td></tr>
                     <tr><td>Suavizar</td><td>Mantener y arrastrar.</td></tr>
                     <tr><td>Aplanar</td><td>A la altura donde empezaste.</td></tr>
                     <tr><td>Detalle editable</td><td>Pinta dónde habrá terreno editable (ver abajo).</td></tr>
@@ -627,8 +635,8 @@
                   <tbody>
                     <tr><td>Ancho</td><td>6–30 m</td></tr>
                     <tr><td>Altura</td><td>4–15 m</td></tr>
-                    <tr><td>Curva</td><td>°/100 m (negativa a la izquierda)</td></tr>
-                    <tr><td>Inclinación</td><td>%</td></tr>
+                    <tr><td>Curva</td><td>−180 a 180 °/100 m (negativa a la izquierda)</td></tr>
+                    <tr><td>Inclinación</td><td>−12 a 12 %</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -662,9 +670,9 @@
                 <li>En tramos abiertos: <code>AC_AB_START</code> / <code>AC_AB_FINISH</code>.</li>
               </ul>
               <h4>Boxes</h4>
-              <p>Clic donde va cada box (<code>AC_PIT_n</code>), orientados según la pista + <em>Giro de los boxes</em>.</p>
+              <p>Clic donde va cada box (<code>AC_PIT_n</code>), orientados según la pista + <em>Giro de los boxes</em> (0–315° en pasos de 45°).</p>
               <h4>Ajustes</h4>
-              <p>Puestos 1–40, separación, invertir sentido, sectores.</p>
+              <p>Puestos 1–40, separación 5–16 m, invertir sentido, sectores.</p>
               <div class="table-wrap">
                 <table>
                   <caption>Colores en la vista 3D</caption>
@@ -710,6 +718,7 @@
                   <li>De serie: <strong>Pino, Frondoso, Palmera, Arbusto</strong>. <em>Importar PNG…</em> para los tuyos (fondo transparente). <em>Mezcla</em> = tipo al azar.</li>
                   <li>Pintar arrastrando (reparte en el <span class="dot dot--green" aria-hidden="true"></span>círculo verde respetando la <em>Separación</em>) o clic a clic. Modo <strong>Borrar</strong> (<span class="dot dot--red" aria-hidden="true"></span>círculo rojo).</li>
                   <li><strong>Altura</strong> y <strong>Variación</strong>. <em>No poner sobre pistas ni muros</em> activado por defecto.</li>
+                  <li><strong>Rangos:</strong> Radio 1–80 m · Separación 2–40 m · Altura 1–40 m · Variación 0–0,6.</li>
                 </ul>
               </div>
 
@@ -717,24 +726,25 @@
                 <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-users"/></svg> Público</h4>
                 <ul>
                   <li>Igual que los árboles, con personas (6 de serie o tus PNG).</li>
-                  <li>Cada persona mira hacia la pista más cercana.</li>
+                  <li>Interruptor <em>Mirar hacia la pista</em>: cada persona mira hacia la pista más cercana.</li>
+                  <li><strong>Rangos:</strong> Radio 1–30 m · Separación 0,6–5 m · Altura 1,3–2,2 m · Variación 0–0,6.</li>
                   <li>Se pueden pintar encima de las gradas (quedan en los escalones).</li>
                 </ul>
               </div>
 
               <div class="sub-card">
                 <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-building"/></svg> Estructuras</h4>
-                <p>Se abre una ventana-catálogo con vista previa 3D girando.</p>
+                <p>Se abre una ventana-catálogo con vista previa 3D girando. Botones: <em>Colocar en el mapa</em>, <em>Cerrar</em>, <em>Importar .glb</em> y <em>Quitar de la biblioteca</em>.</p>
                 <div class="table-wrap">
                   <table>
                     <thead><tr><th scope="col">Estructura</th><th scope="col">Opciones</th></tr></thead>
                     <tbody>
-                      <tr><td>Edificio</td><td>Pisos, ancho, fondo, color de fachada.</td></tr>
-                      <tr><td>Casa</td><td>Plantas, ancho, fondo, color; tejado a dos aguas.</td></tr>
-                      <tr><td>Gasolinera</td><td>Nº de surtidores; marquesina, tienda y explanada asfaltada.</td></tr>
-                      <tr><td>Fuente</td><td>Radio; con plaza de piedra.</td></tr>
-                      <tr><td>Rotonda</td><td>Radio de la isleta, ancho de calzada, largo de salidas y qué salidas tiene (rosa de 8 direcciones: N, NE, E, SE, S, SO, O, NO).</td></tr>
-                      <tr><td>Grada</td><td>Largo, filas, tejadillo.</td></tr>
+                      <tr><td>Edificio</td><td>Pisos 1–30, ancho 6–40 m, fondo 6–40 m, color de la fachada (Crema, Ladrillo, Gris, Blanco).</td></tr>
+                      <tr><td>Casa</td><td>Plantas 1–3, ancho 5–16 m, fondo 5–14 m, color; tejado a dos aguas.</td></tr>
+                      <tr><td>Gasolinera</td><td>Surtidores 1–6; marquesina, tienda y explanada asfaltada.</td></tr>
+                      <tr><td>Fuente</td><td>Radio 2–10 m; con plaza de piedra.</td></tr>
+                      <tr><td>Rotonda</td><td>Radio de la isleta 3–40 m, ancho de la calzada 5–14 m, largo de las salidas 5–80 m y qué salidas tiene (rosa de 8 direcciones: N, NE, E, SE, S, SO, O, NO).</td></tr>
+                      <tr><td>Grada</td><td>Largo 10–120 m, filas 3–20, tejadillo.</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -745,7 +755,7 @@
                 <h4>Colocar</h4>
                 <ul>
                   <li><em>Colocar en el mapa</em> y clic (varias seguidas). Clic derecho termina.</li>
-                  <li><kbd>R</kbd> / <kbd>Shift</kbd>+<kbd>R</kbd> gira 15°; Giro y Escala en el panel.</li>
+                  <li><kbd>R</kbd> / <kbd>Shift</kbd>+<kbd>R</kbd> gira 15°; en el panel, Giro (0–345° en pasos de 15°) y Escala (0,25–4).</li>
                   <li><em>Aplanar el terreno debajo</em> (activado).</li>
                   <li>Clic en una colocada para elegirla: girar, escalar, <strong>Mover</strong> o <strong>Eliminar</strong> (<kbd>Supr</kbd>). <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace.</li>
                 </ul>
@@ -825,11 +835,25 @@
                 </table>
               </div>
             </li>
-            <li><strong>Imagen de satélite</strong>
-              <ul>
-                <li><strong>Automática:</strong> PNOA del IGN si el centro está en España (incluidas Baleares y Canarias); Esri fuera; lo que PNOA no tenga se pide a Esri.</li>
-                <li><strong>PNOA</strong>, <strong>Esri</strong> o <strong>Sin imagen</strong>.</li>
-              </ul>
+            <li><strong>Imagen</strong>
+              Elige en el desplegable (los nombres salen tal cual):
+              <div class="table-wrap" style="margin-top:8px">
+                <table>
+                  <thead><tr><th scope="col">Opción</th><th scope="col">Zona</th></tr></thead>
+                  <tbody>
+                    <tr><td>Imagen: automática</td><td>Elige la ortofoto oficial del país donde está el centro de la zona; fuera de esos países, Sentinel-2.</td></tr>
+                    <tr><td>Imagen: PNOA (IGN, España)</td><td>España, incluidas Baleares y Canarias</td></tr>
+                    <tr><td>Imagen: BD ORTHO (IGN, Francia)</td><td>Francia</td></tr>
+                    <tr><td>Imagen: SWISSIMAGE (swisstopo, Suiza)</td><td>Suiza</td></tr>
+                    <tr><td>Imagen: Luchtfoto (PDOK, Países Bajos)</td><td>Países Bajos</td></tr>
+                    <tr><td>Imagen: Orthofoto (basemap.at, Austria)</td><td>Austria</td></tr>
+                    <tr><td>Imagen: USGS Imagery (Estados Unidos)</td><td>Estados Unidos</td></tr>
+                    <tr><td>Imagen: Sentinel-2 cloudless 2016 (EOX, mundial, 10 m)</td><td>Todo el mundo, 10 m por píxel</td></tr>
+                    <tr><td>Sin imagen de satélite</td><td>—</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              En zonas de frontera, las teselas que no tenga una fuente se piden a la del país vecino y, si no, a Sentinel-2.
             </li>
             <li><strong>Revisar</strong>La barra inferior muestra tamaño, resolución del relieve y de la imagen y teselas a descargar.</li>
             <li><strong>Descargar relieve de la zona</strong>Descarga, genera un <code>.glb</code> y lo importa en modo <em>Convertir en terreno</em>.</li>
@@ -846,6 +870,11 @@
               </tbody>
             </table>
           </div>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">La imagen depende del país</span>
+              <p>Las cifras de imagen de la tabla valen para España, Francia, Suiza, Países Bajos y Austria. En <strong>Estados Unidos</strong> la imagen tiene como mínimo unos 2 m por píxel de cerca. Fuera de los seis países, <strong>Sentinel-2</strong> tiene 10 m por píxel reales aunque la zona sea pequeña. La barra inferior del mapa muestra siempre el valor real.</p></div>
+          </div>
 
           <h4>Límites</h4>
           <ul>
@@ -855,10 +884,10 @@
             <li>Las teselas se guardan en caché (repetir zona es casi inmediato).</li>
           </ul>
 
-          <div class="callout callout--warn">
-            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div class="callout callout--ok">
+            <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
             <div><span class="callout-title">Licencia de las imágenes</span>
-              <p>La imagen de <strong>Esri</strong> es solo para uso personal: <strong>no publiques circuitos con ella</strong>. <strong>PNOA</strong> (CC BY 4.0) sí se puede publicar citando la fuente.</p></div>
+              <p>Todas las fuentes tienen <strong>licencia abierta</strong>: puedes compartir y también vender el circuito citando la fuente. Las citas se escriben solas en <code>CREDITOS.txt</code> al exportar. Detalle de cada fuente en <a href="#creditos">Créditos y licencias</a>.</p></div>
           </div>
 
           <!-- PENDIENTE: captura del mapa de selección de zona -->
@@ -999,8 +1028,14 @@
             <li><strong>Datos del circuito</strong>Nombre, Carpeta (se genera sola), País, Ciudad, Autor.</li>
             <li><strong>Destino</strong><em>Buscar AC</em> encuentra <code>content/tracks</code> en Steam; si no, <em>Elegir…</em>.</li>
             <li><strong>Orientación</strong><em>Girar 180° parrilla y boxes</em> si en el juego los coches salen mirando hacia atrás.</li>
+            <li><strong>Créditos y licencias</strong>Revisa la lista de fuentes de datos que lleva el circuito (relieve e imagen) y del contenido importado (imágenes PNG, modelos <code>.glb</code>, relieve de Blender): <em>debes tener derecho a usarlo</em>. El interruptor <em>Añadir los créditos a la descripción</em> está activado por defecto; el botón <em>Ver aviso legal y licencias</em> abre los textos completos.</li>
             <li><strong>Exportar a Assetto Corsa</strong>Pulsa el botón y listo.</li>
           </ol>
+          <div class="callout callout--warn">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><span class="callout-title">Relieves de versiones antiguas</span>
+              <p>Si el relieve se descargó con una versión anterior del editor que usaba Esri, hay que activar <em>Lo entiendo: es para uso personal</em> o no deja exportar.</p></div>
+          </div>
           <div class="callout callout--ok">
             <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
             <div><span class="callout-title">Seguridad</span>
@@ -1013,13 +1048,16 @@
 ├── <span class="f">&lt;carpeta&gt;.kn5</span>      <span class="c">Modelo 3D (kn5 v5, texturas DDS)</span>
 ├── <span class="f">map.png</span>            <span class="c">Mapa del trazado</span>
 ├── <span class="f">ac_tracker.txt</span>     <span class="c">Marca: solo se sobrescriben carpetas creadas por el editor</span>
+├── <span class="f">CREDITOS.txt</span>       <span class="c">Créditos: fuentes de datos con su cita y avisos de licencia</span>
 ├── <span class="d">data/</span>
 │   ├── <span class="f">surfaces.ini</span>   <span class="c">Superficies ROAD, KERB, GRASS y WALL</span>
 │   └── <span class="f">map.ini</span>
 └── <span class="d">ui/</span>
     ├── <span class="f">ui_track.json</span>  <span class="c">Nombre, país, ciudad, autor, longitud, ancho, nº de boxes</span>
+    │                  <span class="c">(+ créditos en la descripción si está activado)</span>
     ├── <span class="f">outline.png</span>
     └── <span class="f">preview.png</span>    <span class="c">Captura de la vista 3D sin la interfaz</span></code></pre>
+          <p class="muted"><code>CREDITOS.txt</code> incluye el nombre y autor del circuito, «Creado con AC Tracker», las fuentes de datos con su cita, el contenido aportado por el autor y los avisos de licencia.</p>
         </div>
       </div>
 
@@ -1040,7 +1078,7 @@
           <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
           <strong>Captura: panel Exportar AC</strong><span>Pendiente · 16:9</span>
         </div>
-        <figcaption>Datos del circuito, destino y botón «Exportar a Assetto Corsa».</figcaption>
+        <figcaption>Datos del circuito, sección «Créditos y licencias» y «Listo para exportar».</figcaption>
       </figure>
       <!-- PENDIENTE: captura del circuito dentro de Assetto Corsa -->
       <figure class="shot">
@@ -1048,7 +1086,7 @@
           <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
           <strong>Captura: el circuito en el juego</strong><span>Pendiente · 16:9</span>
         </div>
-        <figcaption>El circuito exportado, ya en Assetto Corsa.</figcaption>
+        <figcaption>El circuito exportado, ya en Assetto Corsa (captura pendiente de probarlo en el juego).</figcaption>
       </figure>
     </div>
   </section>
@@ -1201,7 +1239,7 @@
         <div class="acc-item">
           <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn">¿Puedo publicar un circuito con imagen de satélite?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
           <div class="acc-panel" id="faq-11" role="region" aria-labelledby="faq-11-btn" hidden>
-            <p>Con <strong>PNOA</strong> (CC BY 4.0) sí, citando la fuente. Con <strong>Esri</strong> no: es solo para uso personal. Consulta los <a href="#creditos">créditos</a>.</p>
+            <p>Sí. Todas las fuentes tienen licencia abierta y permiten compartirlo y venderlo citando la fuente. AC Tracker escribe las citas en <code>CREDITOS.txt</code>: consérvalo y pon los créditos donde lo publiques. Consulta los <a href="#creditos">créditos</a>.</p>
           </div>
         </div>
         <div class="acc-item">
@@ -1223,7 +1261,7 @@
       </div>
       <ul class="limits">
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El relieve descargado suele tener ~30 m de resolución real: cunetas y taludes hay que modelarlos con los pinceles sobre el detalle de 2 m.</span></li>
-        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Una zona del mapa usa una sola fuente de imagen, decidida por su centro.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La fuente de imagen principal se decide por el centro de la zona; en fronteras se completa con la del país vecino. Fuera de España, Francia, Suiza, Países Bajos, Austria y EE. UU. la imagen es de 10 m por píxel (Sentinel-2) y de cerca se ve borrosa.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El fondo del mar se recorta a −60 m.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La imagen se ve a ~0,8 m/píxel junto a la carretera aunque la fuente tenga más.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El proyecto depende del <code>.glb</code> del relieve.</span></li>
@@ -1249,30 +1287,105 @@
           <tbody>
             <tr><td><strong>OpenStreetMap</strong></td><td>Mapa y buscador (Nominatim)</td><td>ODbL, uso ligero</td><td>«© OpenStreetMap contributors»</td></tr>
             <tr><td><strong>Terrain Tiles</strong> (Mapzen / AWS Open Data)</td><td>Relieve</td><td>Datos abiertos; atribución según región</td><td>En España: Copernicus EU-DEM (UE) y SRTM (USGS)</td></tr>
-            <tr><td><strong>PNOA</strong> (IGN)</td><td>Satélite en España</td><td>CC BY 4.0</td><td>«PNOA cedido por © Instituto Geográfico Nacional»</td></tr>
-            <tr><td><strong>Esri World Imagery</strong></td><td>Satélite fuera de España</td><td>Solo uso personal</td><td>«Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community»</td></tr>
+            <tr><td><strong>PNOA</strong> (IGN)</td><td>Imagen en España</td><td>CC BY 4.0</td><td>«Obra derivada de PNOA CC BY 4.0 scne.es»</td></tr>
+            <tr><td><strong>BD ORTHO</strong> (IGN Francia)</td><td>Imagen en Francia</td><td>Licence Ouverte / Etalab 2.0</td><td>«© IGN – BD ORTHO®, Licence Ouverte Etalab 2.0»</td></tr>
+            <tr><td><strong>SWISSIMAGE</strong> (swisstopo)</td><td>Imagen en Suiza</td><td>Datos abiertos citando la fuente</td><td>«© swisstopo (Federal Office of Topography swisstopo)»</td></tr>
+            <tr><td><strong>Luchtfoto</strong> (PDOK)</td><td>Imagen en Países Bajos</td><td>CC BY 4.0</td><td>«Beeldmateriaal.nl / Kadaster (PDOK), CC BY 4.0»</td></tr>
+            <tr><td><strong>Orthofoto</strong> (basemap.at)</td><td>Imagen en Austria</td><td>CC BY 4.0</td><td>«Datenquelle: basemap.at»</td></tr>
+            <tr><td><strong>USGS Imagery</strong></td><td>Imagen en Estados Unidos</td><td>Dominio público</td><td>«Map services and data available from U.S. Geological Survey, National Geospatial Program.»</td></tr>
+            <tr><td><strong>Sentinel-2 cloudless 2016</strong> (EOX)</td><td>Imagen en el resto del mundo (10 m/píxel)</td><td>CC BY 4.0 (las versiones de 2018 en adelante son no comerciales y no se usan)</td><td>«Sentinel-2 cloudless - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 &amp; 2017)»</td></tr>
             <tr><td><strong>Godot Engine</strong></td><td>Motor con el que está hecho el programa</td><td>MIT</td><td>Su licencia va incluida con el programa</td></tr>
-            <tr><td><strong>Barlow</strong> (The Barlow Project Authors)</td><td>Tipografía de esta web</td><td>SIL Open Font License 1.1</td><td>Licencia incluida en <code>fonts/OFL-Barlow.txt</code></td></tr>
+            <tr><td><strong>Barlow</strong> (The Barlow Project Authors)</td><td>Tipografía de esta web (no del programa)</td><td>SIL Open Font License 1.1</td><td>Licencia incluida en <code>fonts/OFL-Barlow.txt</code></td></tr>
           </tbody>
         </table>
       </div>
       <div class="callout callout--tip">
         <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
         <div><span class="callout-title">Al publicar</span>
-          <p>Si publicas un circuito hecho con datos reales, pon los créditos en su descripción.</p></div>
+          <p>Todas las fuentes permiten compartir y vender el circuito citando la fuente. AC Tracker escribe las citas en <code>CREDITOS.txt</code> al exportar: consérvalo y pon los créditos donde publiques el circuito.</p></div>
       </div>
       <p class="muted"><svg class="icon" aria-hidden="true" style="width:18px;height:18px;vertical-align:-4px;stroke:#9a9ca5"><use href="#i-scale"/></svg> Esto es orientativo, no asesoría legal.</p>
     </div>
   </section>
 
   <!-- =========================================================
+       TÉRMINOS DE USO Y PRIVACIDAD DEL PROGRAMA
+       ========================================================= -->
+  <section class="section section--alt" id="terminos" aria-labelledby="titulo-terminos" data-nav="creditos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">El programa</span>
+        <h2 id="titulo-terminos">Términos de uso y privacidad</h2>
+        <p class="lead">Resumen de la ventana <strong>«Términos de uso y aviso legal»</strong> del programa. Sale sola la primera vez y cada vez que cambian los textos; también se abre con el botón de la balanza de la barra superior o desde Archivo → <em>Términos de uso, aviso legal y licencias</em>. El texto que vale es el del programa.</p>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <div class="panel">
+          <h3>Términos de uso</h3>
+          <ul>
+            <li><strong>Programa gratuito.</strong> © 2026 Lucas P., todos los derechos reservados.</li>
+            <li>Se puede <strong>descargar y usar gratis</strong>. Descárgalo solo desde esta web, que es la descarga oficial.</li>
+            <li>Sin permiso escrito <strong>no se puede</strong> modificar, descompilar, redistribuir, vender, subir a otras webs, quitar sus avisos ni usar su nombre.</li>
+            <li><strong>Los circuitos que creas son tuyos:</strong> puedes publicarlos y venderlos. Si usan datos del mapa real, conserva <code>CREDITOS.txt</code>.</li>
+            <li>Se ofrece <strong>sin garantía</strong>.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Aviso legal</h3>
+          <ul>
+            <li>No está afiliado a <strong>Kunos Simulazioni</strong> ni a <strong>505 Games</strong>.</li>
+            <li>Eres responsable de lo que importas (imágenes, modelos, relieves): debes tener derecho a usarlo.</li>
+            <li>En circuitos reales, los nombres y logos pueden estar protegidos.</li>
+          </ul>
+          <h3 style="margin-top:20px">Datos, mapas y licencias</h3>
+          <ul>
+            <li>La licencia y la cita de cada fuente de datos están en <a href="#creditos">Créditos y licencias</a>.</li>
+            <li>El programa incluye las licencias de <strong>Godot Engine</strong> (MIT) y sus componentes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:18px">
+        <h3>Privacidad del programa</h3>
+        <div class="callout callout--ok" style="margin-top:0">
+          <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+          <div><span class="callout-title">Sin cuentas, sin publicidad y sin estadísticas de uso</span>
+            <p>Todo lo que haces se queda en tu ordenador.</p></div>
+        </div>
+        <p>Solo se conecta a internet al usar el <strong>mapa real</strong>, y solo a estos servidores, a los que envía únicamente su nombre y versión:</p>
+        <ul class="split" style="list-style:none;padding:0;gap:6px">
+          <li><code>tile.openstreetmap.org</code></li>
+          <li><code>nominatim.openstreetmap.org</code></li>
+          <li><code>s3.amazonaws.com</code></li>
+          <li><code>www.ign.es</code></li>
+          <li><code>data.geopf.fr</code></li>
+          <li><code>wmts.geo.admin.ch</code></li>
+          <li><code>service.pdok.nl</code></li>
+          <li><code>mapsneu.wien.gv.at</code></li>
+          <li><code>basemap.nationalmap.gov</code></li>
+          <li><code>tiles.maps.eox.at</code></li>
+        </ul>
+      </div>
+
+      <!-- PENDIENTE: captura de la ventana legal (pestaña Términos de uso) -->
+      <figure class="shot">
+        <div class="placeholder" role="img" aria-label="Marcador: captura de la ventana Términos de uso y aviso legal (pendiente)">
+          <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+          <strong>Captura: ventana «Términos de uso y aviso legal»</strong><span>Pendiente · 16:9</span>
+        </div>
+        <figcaption>Pestañas Términos de uso, Aviso legal, Datos y mapas, Privacidad y Licencias.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =========================================================
        AVISO LEGAL Y PRIVACIDAD
        ========================================================= -->
-  <section class="section section--alt" id="legal" aria-labelledby="titulo-legal" data-nav="creditos">
+  <section class="section" id="legal" aria-labelledby="titulo-legal" data-nav="creditos">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Lo básico, en claro</span>
-        <h2 id="titulo-legal">Aviso legal y privacidad</h2>
+        <h2 id="titulo-legal">Aviso legal y privacidad de esta web</h2>
       </div>
 
       <div class="grid grid--2" style="align-items:start">
@@ -1285,7 +1398,7 @@
             <li><strong>Finalidad:</strong> web informativa y sin ánimo de lucro que presenta y documenta AC Tracker. No vende nada ni muestra publicidad.</li>
             <li><strong>Contenido:</strong> la información es orientativa. AC Tracker es un proyecto en desarrollo y puede cambiar; se ofrece tal cual, sin garantías.</li>
             <li><strong>Marcas:</strong> Assetto Corsa y el resto de marcas citadas pertenecen a sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</li>
-            <li><strong>Licencia:</strong> licencia <strong>MIT</strong>: puedes usar, copiar, modificar y distribuir con libertad, manteniendo el aviso de copyright y la licencia. Se ofrece sin garantías. La tipografía tiene su propia licencia (ver <a href="#creditos">Créditos</a>).</li>
+            <li><strong>Licencia de esta web:</strong> el código de la web (HTML, CSS y JavaScript) se publica bajo licencia <strong>MIT</strong>. <strong>No incluye el programa AC Tracker</strong>, que es gratuito pero con todos los derechos reservados (ver <a href="#terminos">Términos de uso del programa</a>). La tipografía tiene su propia licencia (ver <a href="#creditos">Créditos</a>).</li>
             <li><strong>Datos de terceros:</strong> las fuentes de mapas, relieve e imágenes y sus condiciones están en <a href="#creditos">Créditos y licencias</a>.</li>
           </ul>
         </div>
@@ -1318,7 +1431,8 @@
     <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
     <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</p>
-    <p>© 2026 Lucas P. · Licencia MIT · <a href="#legal">Aviso legal y privacidad</a> · <a href="#creditos">Créditos y licencias</a></p>
+    <p>© 2026 Lucas P. · AC Tracker: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
+    <p><a href="#terminos">Términos de uso</a> · <a href="#legal">Aviso legal y privacidad</a> · <a href="#creditos">Créditos y licencias</a></p>
   </div>
 </footer>
 
