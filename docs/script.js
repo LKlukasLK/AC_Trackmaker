@@ -1,4 +1,4 @@
-/* AC Tracker — interacciones de la web
+/* AC Trackmaker — interacciones de la web
    Solo: menú móvil, acordeones, sección activa, volver arriba y buscador de herramientas. */
 (function () {
   "use strict";
@@ -36,9 +36,7 @@
     });
   });
 
-  /* ---------- Sección activa (menú superior e índice de herramientas) ---------- */
-  var navLinks = nav.querySelectorAll("a");
-  var sections = document.querySelectorAll("[data-nav]");
+  /* ---------- Sección activa en el índice de herramientas ---------- */
   var toolLinks = document.querySelectorAll(".tools-index a");
   var toolCards = document.querySelectorAll(".tool-card");
 
@@ -58,13 +56,6 @@
   }
 
   function updateActive() {
-    var sec = currentFrom(sections, function (s) { return s.getAttribute("data-nav"); }) || "inicio";
-    navLinks.forEach(function (a) {
-      var on = a.getAttribute("href") === "#" + sec;
-      a.classList.toggle("active", on);
-      if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
-    });
-
     var tool = currentFrom(toolCards, function (c) { return c.id; });
     toolLinks.forEach(function (a) {
       a.classList.toggle("active", a.getAttribute("data-tool") === tool);
@@ -95,6 +86,7 @@
 
   /* ---------- Buscador de la guía de herramientas ---------- */
   var input = document.getElementById("tool-search");
+  if (!input) return; // solo la página de herramientas tiene buscador
   var status = document.getElementById("search-status");
   var noResults = document.getElementById("no-results");
 

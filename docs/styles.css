@@ -1003,3 +1003,8 @@ details.curious > ul { padding-bottom: 8px; }
 
 .badge--green { color: var(--green); border-color: rgba(76, 201, 122, 0.45); }
 .badge--green .icon { stroke: var(--green); }
+
+/* Tarjetas-enlace de la portada */
+.link-card { display: block; color: var(--text); text-decoration: none; transition: border-color 0.15s, transform 0.15s; }
+.link-card:hover { color: var(--text); border-color: var(--red); transform: translateY(-2px); }
+.link-card p { color: #c9cbd1; }

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atajos de teclado — AC Trackmaker</title>
+  <meta name="description" content="Atajos de teclado, controles de cámara y archivos que crea AC Trackmaker.">
+  <meta name="theme-color" content="#232429">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Iconos de línea (trazo blanco) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></symbol>
+    <symbol id="i-wall" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 20 9 7l4 7 2.5-3.5L22 20z"/><path d="m7.2 10.3 1.8 1.7 1.6-1.5"/></symbol>
+    <symbol id="i-hole" viewBox="0 0 24 24"><path d="M3 14h4M17 14h4"/><ellipse cx="12" cy="14" rx="5" ry="2.2"/><path d="M7 14c0 3.5 2.2 6 5 6s5-2.5 5-6"/><path d="M12 4v5M9.5 6.5 12 9l2.5-2.5"/></symbol>
+    <symbol id="i-tunnel" viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4 20V12a8 8 0 0 1 16 0v8"/><path d="M8 20v-7a4 4 0 0 1 8 0v7"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/><path d="M9.3 4v9M13.6 4v9"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3 5 13h4l-3 5h12l-3-5h4z"/><path d="M12 18v3"/></symbol>
+    <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7v.5M12 17h.01"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3M7 21v-7h10v7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8z"/><path d="m2 13 10 5 10-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+    <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a4 4 0 0 1 4 4v2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 8l8 2v11M2 21h20"/><path d="M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24"><path d="m7 7 4 4M4 10l3-3 3 3-3 3zM13 14l3-3 3 3-3 3z"/><path d="m10 10 4 4"/><path d="M15 21a6 6 0 0 0 6-6M15 18a3 3 0 0 0 3-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16"/><path d="m4 7-2 6a3 3 0 0 0 4 0zM20 7l-2 6a3 3 0 0 0 4 0z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      <span>Menú</span>
+    </button>
+    <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="importar.html">Importar relieve</a></li>
+        <li><a href="exportar.html">Exportar a AC</a></li>
+        <li><a href="atajos.html" class="active" aria-current="page">Atajos</a></li>
+        <li><a href="faq.html">Preguntas</a></li>
+        <li><a href="legal.html">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="kerb" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+  <!-- =========================================================
+       ATAJOS
+       ========================================================= -->
+  <section class="section section--alt" id="atajos" aria-labelledby="titulo-atajos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Teclado y ratón</span>
+        <h2 id="titulo-atajos">Atajos de teclado</h2>
+        <p class="lead">En el editor, pulsa <kbd>F1</kbd> para verlos.</p>
+      </div>
+      <div class="grid grid--2" style="align-items:start">
+        <div class="table-wrap" style="margin-top:0">
+          <table>
+            <caption>Editor</caption>
+            <thead><tr><th scope="col">Tecla</th><th scope="col">Acción</th></tr></thead>
+            <tbody>
+              <tr><td class="nowrap"><kbd>1</kbd> … <kbd>9</kbd>, <kbd>0</kbd></td><td>Trazado, Muros, Elevaciones, Quitar suelo, Túneles, Spawns, Decoración, Importar, Exportar AC, Archivo</td></tr>
+              <tr><td class="nowrap"><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Deshacer en la herramienta activa</td></tr>
+              <tr><td>Clic derecho / <kbd>Esc</kbd></td><td>Terminar o cancelar</td></tr>
+              <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td>Guardar / Guardar como</td></tr>
+              <tr><td class="nowrap"><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td>Abrir proyecto</td></tr>
+              <tr><td class="nowrap"><kbd>N</kbd> o <kbd>Tab</kbd></td><td>Mostrar u ocultar el panel</td></tr>
+              <tr><td class="nowrap"><kbd>F1</kbd></td><td>Atajos de teclado</td></tr>
+              <tr><td class="nowrap"><kbd>R</kbd> / <kbd>Shift</kbd>+<kbd>R</kbd></td><td>Decoración: girar la estructura 15°</td></tr>
+              <tr><td class="nowrap"><kbd>Supr</kbd></td><td>Decoración: quitar la estructura elegida</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="table-wrap" style="margin-top:0">
+            <table>
+              <caption>Cámara</caption>
+              <thead><tr><th scope="col">Control</th><th scope="col">Acción</th></tr></thead>
+              <tbody>
+                <tr><td class="nowrap"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Moverse en horizontal</td></tr>
+                <tr><td class="nowrap"><kbd>E</kbd> / <kbd>Q</kbd></td><td>Subir / bajar</td></tr>
+                <tr><td class="nowrap"><kbd>Shift</kbd></td><td>Más rápido</td></tr>
+                <tr><td>Rueda pulsada + mover</td><td>Girar alrededor del punto del suelo que hay bajo la mira «+»</td></tr>
+                <tr><td>Rueda</td><td>Acercar / alejar hacia ese punto</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Consejo</span>
+              <p>La velocidad se adapta a la distancia al suelo. Con <kbd>Ctrl</kbd> pulsado la cámara no se mueve (para que <kbd>Ctrl</kbd>+<kbd>S</kbd> no la desplace).</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archivos del editor -->
+      <div id="archivos" style="margin-top:40px">
+        <h3 style="font-size:1.6rem;font-style:italic;text-transform:uppercase">Archivos que crea el editor</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Archivo</th><th scope="col">Dónde</th><th scope="col">Qué es</th></tr></thead>
+            <tbody>
+              <tr><td><code>*.actrack</code></td><td>Donde elijas</td><td>Proyecto (binario comprimido; se lee sin permitir objetos, un archivo manipulado no puede ejecutar código).</td></tr>
+              <tr><td><code>ajustes.cfg</code></td><td>Datos de usuario</td><td>Carpeta de AC, datos de exportación, recientes, autoguardado, última vista del mapa.</td></tr>
+              <tr><td><code>autoguardado.actrack</code> / <code>autoguardado_sesion_anterior.actrack</code></td><td>Datos de usuario</td><td>Copias automáticas.</td></tr>
+              <tr><td><code>relieves_gis/zona_&lt;fecha&gt;.glb</code> + <code>.json</code></td><td>Datos de usuario</td><td>Relieves descargados (~10–35 MB). <strong>No borrar si un proyecto los usa.</strong></td></tr>
+              <tr><td><code>cache_gis/</code></td><td>Datos de usuario</td><td>Teselas descargadas; se puede borrar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--tip">
+          <svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg>
+          <div><span class="callout-title">Datos de usuario en Windows</span>
+            <p><code>%APPDATA%\Godot\app_userdata\AC Trackmaker\</code></p><p>Si tenías una versión anterior (que usaba la carpeta <code>AC_tracker</code>), la primera vez se copian solos los ajustes y el autoguardado. Los proyectos siguen siendo <code>.actrack</code> y las carpetas de circuitos exportados siguen llevando <code>ac_tracker.txt</code>, así que todo lo creado antes sigue siendo compatible.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="kerb" aria-hidden="true"></div>
+  <div class="container">
+    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
+    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
+    <p>© 2026 Lucas P. · AC Trackmaker 1.0.2: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
+    <p><a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">Descargar en itch.io</a> · <a href="legal.html#terminos">Términos de uso</a> · <a href="legal.html#legal">Aviso legal y privacidad</a> · <a href="legal.html#creditos">Créditos y licencias</a></p>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+  <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

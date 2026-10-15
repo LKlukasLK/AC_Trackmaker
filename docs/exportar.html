@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exportar a Assetto Corsa — AC Trackmaker</title>
+  <meta name="description" content="Cómo exportar un circuito de AC Trackmaker a Assetto Corsa y qué archivos se generan.">
+  <meta name="theme-color" content="#232429">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Iconos de línea (trazo blanco) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></symbol>
+    <symbol id="i-wall" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 20 9 7l4 7 2.5-3.5L22 20z"/><path d="m7.2 10.3 1.8 1.7 1.6-1.5"/></symbol>
+    <symbol id="i-hole" viewBox="0 0 24 24"><path d="M3 14h4M17 14h4"/><ellipse cx="12" cy="14" rx="5" ry="2.2"/><path d="M7 14c0 3.5 2.2 6 5 6s5-2.5 5-6"/><path d="M12 4v5M9.5 6.5 12 9l2.5-2.5"/></symbol>
+    <symbol id="i-tunnel" viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4 20V12a8 8 0 0 1 16 0v8"/><path d="M8 20v-7a4 4 0 0 1 8 0v7"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/><path d="M9.3 4v9M13.6 4v9"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3 5 13h4l-3 5h12l-3-5h4z"/><path d="M12 18v3"/></symbol>
+    <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7v.5M12 17h.01"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3M7 21v-7h10v7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8z"/><path d="m2 13 10 5 10-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+    <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a4 4 0 0 1 4 4v2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 8l8 2v11M2 21h20"/><path d="M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24"><path d="m7 7 4 4M4 10l3-3 3 3-3 3zM13 14l3-3 3 3-3 3z"/><path d="m10 10 4 4"/><path d="M15 21a6 6 0 0 0 6-6M15 18a3 3 0 0 0 3-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16"/><path d="m4 7-2 6a3 3 0 0 0 4 0zM20 7l-2 6a3 3 0 0 0 4 0z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      <span>Menú</span>
+    </button>
+    <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="importar.html">Importar relieve</a></li>
+        <li><a href="exportar.html" class="active" aria-current="page">Exportar a AC</a></li>
+        <li><a href="atajos.html">Atajos</a></li>
+        <li><a href="faq.html">Preguntas</a></li>
+        <li><a href="legal.html">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="kerb" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+  <!-- =========================================================
+       EXPORTAR A AC
+       ========================================================= -->
+  <section class="section" id="exportar" aria-labelledby="titulo-exportar">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Herramienta <kbd>9</kbd></span>
+        <h2 id="titulo-exportar">Exportar a Assetto Corsa</h2>
+        <p class="lead">El circuito va directo a la carpeta del juego: el <code>.kn5</code> y todos los archivos de datos.</p>
+      </div>
+
+      <div class="grid grid--2" style="align-items:start">
+        <div>
+          <ol class="steps">
+            <li><strong>Datos del circuito</strong>Nombre, Carpeta (se genera sola), País, Ciudad, Autor.</li>
+            <li><strong>Destino</strong><em>Buscar AC</em> encuentra <code>content/tracks</code> en Steam; si no, <em>Elegir…</em>.</li>
+            <li><strong>Orientación</strong><em>Girar 180° parrilla y boxes</em> si en el juego los coches salen mirando hacia atrás.</li>
+            <li><strong>Créditos y licencias</strong>Revisa la lista de fuentes de datos que lleva el circuito (relieve e imagen) y del contenido importado (imágenes PNG, modelos <code>.glb</code>, relieve de Blender): <em>debes tener derecho a usarlo</em>. El interruptor <em>Añadir los créditos a la descripción</em> está activado por defecto; el botón <em>Ver aviso legal y licencias</em> abre los textos completos.</li>
+            <li><strong>Exportar a Assetto Corsa</strong>Pulsa el botón y listo.</li>
+          </ol>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Rivales e IA</span>
+              <p>Con la línea de la IA ya se pueden usar rivales, la línea ideal de ayuda y el modo práctica con IA. La línea va por el centro de la pista y es un punto de partida: para una IA rápida, grábala en el juego y sustituye <code>ai/fast_lane.ai</code>.</p></div>
+          </div>
+          <div class="callout callout--ok">
+            <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <div><span class="callout-title">Seguridad</span>
+              <p>Nunca sobrescribe un circuito que no haya creado AC Trackmaker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
+          </div>
+        </div>
+        <div>
+          <h3>Archivos generados</h3>
+<pre aria-label="Árbol de archivos generado"><code><span class="d">content/tracks/&lt;carpeta&gt;/</span>
+├── <span class="f">&lt;carpeta&gt;.kn5</span>      <span class="c">Modelo 3D (kn5 v5, texturas DDS)</span>
+├── <span class="f">map.png</span>            <span class="c">Mapa del trazado</span>
+├── <span class="f">ac_tracker.txt</span>     <span class="c">Marca: solo se sobrescriben carpetas creadas por el editor</span>
+├── <span class="f">CREDITOS.txt</span>       <span class="c">Créditos: fuentes de datos con su cita y avisos de licencia</span>
+├── <span class="d">ai/</span>
+│   ├── <span class="f">fast_lane.ai</span>   <span class="c">Línea de la IA y línea ideal (un punto cada 2 m)</span>
+│   └── <span class="f">pit_lane.ai</span>    <span class="c">Solo si hay calle de boxes (IA a 80 km/h)</span>
+├── <span class="d">data/</span>
+│   ├── <span class="f">surfaces.ini</span>   <span class="c">ROAD, KERB, GRASS, WET, SNOW, DIRT, PIT y WALL</span>
+│   └── <span class="f">map.ini</span>
+└── <span class="d">ui/</span>
+    ├── <span class="f">ui_track.json</span>  <span class="c">Nombre, país, ciudad, autor, longitud, ancho, nº de boxes</span>
+    │                  <span class="c">(+ créditos en la descripción si está activado)</span>
+    ├── <span class="f">outline.png</span>
+    └── <span class="f">preview.png</span>    <span class="c">Captura de la vista 3D sin la interfaz</span></code></pre>
+          <p class="muted"><code>CREDITOS.txt</code> empieza con «Creado con AC Trackmaker (editor independiente, no afiliado a Kunos Simulazioni ni a 505 Games).» y el enlace a la descarga oficial del editor. Después incluye el nombre y autor del circuito, las fuentes de datos con su cita, el contenido aportado por el autor y los avisos de licencia. Con <em>Añadir los créditos a la descripción</em> activado, la descripción del circuito en el juego empieza por «Creado con AC Trackmaker» con el enlace a itch.io y sigue con las fuentes de datos.</p>
+        </div>
+      </div>
+
+      <details class="curious">
+        <summary><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Para curiosos: detalles técnicos</summary>
+        <ul>
+          <li>Piezas de menos de <strong>65 000 vértices</strong> (índices de 16 bits del kn5).</li>
+          <li>El relieve a menos de <strong>300 m</strong> de una pista lleva colisión.</li>
+          <li>El relieve se simplifica con la distancia a las pistas: mitad de detalle a partir de <strong>1 km</strong>, otra vez a <strong>4 km</strong> y a <strong>10 km</strong>.</li>
+          <li>Carreteras y pianos con <code>ksPerPixelNM</code> (mapa de normales: el relieve de grietas, estrías, piedras y charcos también se ve en el juego); árboles, público y hierba con <code>ksPerPixelAT</code>; el resto con <code>ksPerPixel</code>. La tierra usa transparencia suave en los bordes.</li>
+          <li>Árboles, público y hierba con texturas DXT5, en piezas de <strong>250 m</strong> y sin colisión.</li>
+          <li><code>fast_lane.ai</code> sale de la meta en el sentido de carrera, con un punto cada 2 m y la velocidad estimada según las curvas.</li>
+          <li>Aviso si el circuito pasa de <strong>3 millones de triángulos</strong>.</li>
+        </ul>
+      </details>
+
+      <!-- PENDIENTE: captura del panel de exportación -->
+      <figure class="shot">
+        <div class="placeholder" role="img" aria-label="Marcador: captura del panel Exportar AC (pendiente)">
+          <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+          <strong>Captura: panel Exportar AC</strong><span>Pendiente · 16:9</span>
+        </div>
+        <figcaption>Datos del circuito, sección «Créditos y licencias» y «Listo para exportar».</figcaption>
+      </figure>
+      <!-- PENDIENTE: captura del circuito dentro de Assetto Corsa -->
+      <figure class="shot">
+        <div class="placeholder" role="img" aria-label="Marcador: captura del circuito exportado funcionando en Assetto Corsa (pendiente)">
+          <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
+          <strong>Captura: el circuito en el juego</strong><span>Pendiente · 16:9</span>
+        </div>
+        <figcaption>El circuito exportado, ya en Assetto Corsa (captura pendiente de probarlo en el juego).</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="kerb" aria-hidden="true"></div>
+  <div class="container">
+    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
+    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
+    <p>© 2026 Lucas P. · AC Trackmaker 1.0.2: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
+    <p><a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">Descargar en itch.io</a> · <a href="legal.html#terminos">Términos de uso</a> · <a href="legal.html#legal">Aviso legal y privacidad</a> · <a href="legal.html#creditos">Créditos y licencias</a></p>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+  <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

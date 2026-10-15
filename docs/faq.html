@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preguntas frecuentes — AC Trackmaker</title>
+  <meta name="description" content="Preguntas frecuentes y limitaciones conocidas de AC Trackmaker.">
+  <meta name="theme-color" content="#232429">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Iconos de línea (trazo blanco) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h7a3.5 3.5 0 0 0 0-7H10a3.5 3.5 0 0 1 0-7h7"/></symbol>
+    <symbol id="i-wall" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 20 9 7l4 7 2.5-3.5L22 20z"/><path d="m7.2 10.3 1.8 1.7 1.6-1.5"/></symbol>
+    <symbol id="i-hole" viewBox="0 0 24 24"><path d="M3 14h4M17 14h4"/><ellipse cx="12" cy="14" rx="5" ry="2.2"/><path d="M7 14c0 3.5 2.2 6 5 6s5-2.5 5-6"/><path d="M12 4v5M9.5 6.5 12 9l2.5-2.5"/></symbol>
+    <symbol id="i-tunnel" viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4 20V12a8 8 0 0 1 16 0v8"/><path d="M8 20v-7a4 4 0 0 1 8 0v7"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4.5L18 13H5"/><path d="M9.3 4v9M13.6 4v9"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3 5 13h4l-3 5h12l-3-5h4z"/><path d="M12 18v3"/></symbol>
+    <symbol id="i-import" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3z"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7v.5M12 17h.01"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v5h8V3M7 21v-7h10v7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8z"/><path d="m2 13 10 5 10-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+    <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a4 4 0 0 1 4 4v2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 8l8 2v11M2 21h20"/><path d="M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24"><path d="m7 7 4 4M4 10l3-3 3 3-3 3zM13 14l3-3 3 3-3 3z"/><path d="m10 10 4 4"/><path d="M15 21a6 6 0 0 0 6-6M15 18a3 3 0 0 0 3-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16"/><path d="m4 7-2 6a3 3 0 0 0 4 0zM20 7l-2 6a3 3 0 0 0 4 0z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      <span>Menú</span>
+    </button>
+    <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="importar.html">Importar relieve</a></li>
+        <li><a href="exportar.html">Exportar a AC</a></li>
+        <li><a href="atajos.html">Atajos</a></li>
+        <li><a href="faq.html" class="active" aria-current="page">Preguntas</a></li>
+        <li><a href="legal.html">Créditos</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="kerb" aria-hidden="true"></div>
+</header>
+
+<main id="contenido">
+  <!-- =========================================================
+       PREGUNTAS FRECUENTES
+       ========================================================= -->
+  <section class="section" id="faq" aria-labelledby="titulo-faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Dudas habituales</span>
+        <h2 id="titulo-faq">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">¿Necesito saber Blender?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-1" role="region" aria-labelledby="faq-1-btn" hidden>
+            <p>No. Con <em>Elegir zona en el mapa…</em> (herramienta Importar) el editor descarga el relieve real de la zona que marques. Blender es opcional: solo si quieres usar tu propio relieve o tus estructuras.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">¿Por qué no puedo modificar el terreno en una zona?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-2" role="region" aria-labelledby="faq-2-btn" hidden>
+            <p>Solo se edita el <strong>terreno de detalle</strong>; el relieve base no se edita. Crea detalle en esa zona con Elevaciones → <em>Detalle editable</em> (pinta la zona o usa <em>Pintar a lo largo de las pistas</em>) y pulsa <em>Aplicar</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">Los pinceles no hacen nada sobre el relieve importado en modo «tal cual».<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-3" role="region" aria-labelledby="faq-3-btn" hidden>
+            <p>Es lo esperado: en modo <em>Modelo tal cual</em> las herramientas de terreno no modifican el modelo. Si quieres editarlo, vuelve a importarlo en modo <em>Convertir en terreno</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">Mi modelo de Blender da error de eje vertical.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-4" role="region" aria-labelledby="faq-4-btn" hidden>
+            <p>El modelo sale más alto que ancho (altura mayor del 40 % del lado mayor), así que el eje vertical está girado. Vuelve a exportarlo desde Blender con la opción <strong>+Y arriba</strong> activada.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">El modelo pesa mucho / sale la alerta «Revisar modelo».<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-5" role="region" aria-labelledby="faq-5-btn" hidden>
+            <p>Reduce los triángulos con el modificador <strong>Decimate</strong> (o importa el DEM con menos resolución) y deja las texturas en <strong>4096 × 4096</strong> como máximo. No hagas remesh: pierde las texturas. Si solo hay avisos, puedes elegir <em>Importar igualmente</em>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn">El túnel sale en rojo.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-6" role="region" aria-labelledby="faq-6-btn" hidden>
+            <p>Falta montaña: hacen falta <strong>3 m de montaña sobre el techo</strong> del túnel. Cambia la orientación o el punto de la boca, o levanta el terreno con los pinceles de Elevaciones.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn">En el juego los coches salen mirando hacia atrás.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-7" role="region" aria-labelledby="faq-7-btn" hidden>
+            <p>Activa <em>Girar 180° parrilla y boxes</em> en Exportar AC y vuelve a exportar.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-8" id="faq-8-btn">¿Cuántos coches caben?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-8" role="region" aria-labelledby="faq-8-btn" hidden>
+            <p>Tantos como boxes. Hace falta al menos uno; colócalos con la herramienta Spawns.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-9" id="faq-9-btn">¿Sobrescribe mis otros circuitos?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-9" role="region" aria-labelledby="faq-9-btn" hidden>
+            <p>No. Solo sobrescribe carpetas que contienen <code>ac_tracker.txt</code>, es decir, creadas por el editor. Si la carpeta existe sin esa marca, se niega y pide otro nombre.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn">He movido el .glb del relieve y el proyecto abre sin él.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-10" role="region" aria-labelledby="faq-10-btn" hidden>
+            <p>El relieve no va dentro del proyecto: se guarda la ruta a su <code>.glb</code> y se reimporta al abrir. Vuelve a ponerlo en su ruta y abre el proyecto de nuevo.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn">¿Puedo publicar un circuito con imagen de satélite?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-11" role="region" aria-labelledby="faq-11-btn" hidden>
+            <p>Sí. Todas las fuentes tienen licencia abierta y permiten compartirlo y venderlo citando la fuente. AC Trackmaker escribe las citas en <code>CREDITOS.txt</code>: consérvalo y pon los créditos donde lo publiques. Consulta los <a href="legal.html#creditos">créditos</a>.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn">¿Se pierde el trabajo si se cierra?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-12" role="region" aria-labelledby="faq-12-btn" hidden>
+            <p>El autoguardado se hace cada 1–15 min (3 por defecto) y al cerrar. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>. Ojo: lo pintado en rojo sin aplicar en Detalle editable no se guarda.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-13" id="faq-13-btn">¿Lo que veo en el editor es lo que veré en el juego?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-13" role="region" aria-labelledby="faq-13-btn" hidden>
+            <p>Las texturas y el relieve, sí. La luz, el cielo, las sombras y el brillo los pone cada motor: en Assetto Corsa también dependen de la hora, del tiempo y de Custom Shaders Patch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limitaciones -->
+  <section class="section section--alt" id="limitaciones" aria-labelledby="titulo-limites">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Con sinceridad</span>
+        <h2 id="titulo-limites">Limitaciones conocidas</h2>
+      </div>
+      <ul class="limits">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El relieve descargado suele tener ~30 m de resolución real: cunetas y taludes hay que modelarlos con los pinceles sobre el detalle de 2 m.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La fuente de imagen principal se decide por el centro de la zona; en fronteras se completa con la del país vecino. Fuera de España, Francia, Suiza, Países Bajos, Austria y EE. UU. la imagen es de 10 m por píxel (Sentinel-2) y de cerca se ve borrosa.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El fondo del mar se recorta a −60 m.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La imagen se ve a ~0,8 m/píxel junto a la carretera aunque la fuente tenga más.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El proyecto depende del <code>.glb</code> del relieve.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Lo pintado en rojo sin aplicar no se guarda.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Deshacer una estructura no deshace el aplanado del terreno (se deshace en Elevaciones). Sobre relieve sin detalle editable no se aplana.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Proyecto en desarrollo: algunos aspectos (orientación de spawns, rendimiento de circuitos muy grandes) pueden necesitar ajustes al probarlos en el juego.</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="kerb" aria-hidden="true"></div>
+  <div class="container">
+    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
+    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
+    <p>© 2026 Lucas P. · AC Trackmaker 1.0.2: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
+    <p><a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">Descargar en itch.io</a> · <a href="legal.html#terminos">Términos de uso</a> · <a href="legal.html#legal">Aviso legal y privacidad</a> · <a href="legal.html#creditos">Créditos y licencias</a></p>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+  <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
