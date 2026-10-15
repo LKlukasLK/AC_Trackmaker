@@ -289,7 +289,7 @@ main { padding-top: var(--header-h); }
   align-items: center;
 }
 .hero h1 {
-  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
   font-weight: 800;
   font-style: italic;
   text-transform: uppercase;

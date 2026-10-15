@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AC Tracker — Editor de circuitos para Assetto Corsa</title>
-  <meta name="description" content="AC Tracker: programa de escritorio para Windows para crear circuitos de Assetto Corsa sin modelar en 3D y exportarlos directamente al juego.">
+  <title>AC Trackmaker — Editor de circuitos para Assetto Corsa</title>
+  <meta name="description" content="AC Trackmaker: programa de escritorio para Windows para crear circuitos de Assetto Corsa sin modelar en 3D y exportarlos directamente al juego.">
   <meta name="theme-color" content="#232429">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -55,7 +55,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="#inicio" aria-label="AC Tracker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
+    <a class="logo" href="#inicio" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
       <span>Menú</span>
@@ -85,7 +85,7 @@
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Editor de circuitos para Assetto Corsa</span>
-        <h1 id="titulo-inicio">AC <span>Tracker</span></h1>
+        <h1 id="titulo-inicio">AC <span>Trackmaker</span></h1>
         <p class="tagline">De una idea a un circuito jugable en Assetto Corsa, sin pasar por 3ds Max ni Blender.</p>
         <p class="lead">Programa de escritorio para <strong>Windows</strong> para crear circuitos de <strong>Assetto Corsa</strong> sin modelar en 3D: dibujas la carretera, modelas el terreno, pones muros, túneles, decoración y spawns, y lo <strong>exportas directamente</strong> a la carpeta del juego (el <code>.kn5</code> y todos los archivos de datos).</p>
         <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con ortofotos oficiales con licencia abierta), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
@@ -93,6 +93,7 @@
           <li class="badge badge--green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratis</li>
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</li>
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-import"/></svg>Descarga en .exe</li>
+          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Versión 1.0.2</li>
           <li class="badge badge--amber"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Proyecto en desarrollo</li>
         </ul>
         <div class="btn-row">
@@ -100,12 +101,12 @@
           <a class="btn btn--ghost" href="#como-funciona"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Cómo funciona</a>
           <a class="btn btn--ghost" href="#herramientas"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Ver las herramientas</a>
         </div>
-        <p class="muted" style="margin-top:10px;font-size:0.92rem">Descarga oficial en itch.io · <code>.exe</code> para Windows 10/11 de 64 bits</p>
+        <p class="muted" style="margin-top:10px;font-size:0.92rem">Descarga oficial en itch.io · <code>AC_Trackmaker.exe</code> · versión 1.0.2 · Windows 10/11 de 64 bits</p>
       </div>
       <div>
         <!-- PENDIENTE: captura principal del editor -->
         <figure class="shot">
-          <div class="placeholder" role="img" aria-label="Marcador: captura principal del editor AC Tracker (pendiente)">
+          <div class="placeholder" role="img" aria-label="Marcador: captura principal del editor AC Trackmaker (pendiente)">
             <svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>
             <strong>Captura del editor</strong>
             <span>Pendiente · 16:9</span>
@@ -193,15 +194,15 @@
             <li><strong>Windows 10 u 11 de 64 bits.</strong></li>
             <li>Tarjeta gráfica compatible con <strong>DirectX 12</strong>, <strong>Vulkan</strong> u <strong>OpenGL 3.3</strong>. El programa usa DirectX 12 y, si el equipo no lo tiene, pasa solo a Vulkan o a OpenGL 3.3 (modo compatibilidad). No hace falta configurar nada.</li>
             <li><strong>Internet</strong> solo para el mapa real (relieve, imágenes y buscador).</li>
-            <li><strong>Assetto Corsa</strong> instalado para exportar directamente al juego.</li>
+            <li><strong>Assetto Corsa</strong> (PC, Steam) instalado para exportar directamente al juego. Ver <a href="#compatibilidad">compatibilidad</a>.</li>
           </ul>
         </div>
         <div class="panel">
           <h3>Puesta en marcha</h3>
           <ol class="steps steps--compact">
-            <li><strong>Descarga</strong> el archivo <code>.exe</code> desde <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a>.</li>
+            <li><strong>Descarga</strong> <code>AC_Trackmaker.exe</code> desde <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a>.</li>
             <li><strong>Ábrelo</strong> con doble clic: es un único archivo, no hay que instalar nada.</li>
-            <li>La primera vez sale la ventana <strong>«Términos de uso y aviso legal»</strong>: léela y pulsa <strong>Aceptar</strong>.</li>
+            <li>La primera vez sale la ventana <strong>«Términos de uso y aviso legal»</strong>: léela y pulsa <strong>Aceptar</strong>. Vuelve a salir una vez cuando se actualizan los términos (por ejemplo, con una versión nueva que los cambie).</li>
             <li>Sigue el <a href="#como-funciona">flujo de trabajo</a> para crear tu primer circuito.</li>
           </ol>
           <div class="callout callout--tip">
@@ -209,6 +210,29 @@
             <div><span class="callout-title">Aviso de SmartScreen</span>
               <p>Como el <code>.exe</code> no está firmado digitalmente, Windows puede mostrar el aviso de SmartScreen: pulsa <strong>Más información</strong> → <strong>Ejecutar de todas formas</strong>.</p></div>
           </div>
+        </div>
+      </div>
+
+      <div id="compatibilidad" style="margin-top:32px">
+        <h3 style="font-size:1.6rem;font-style:italic;text-transform:uppercase">Compatibilidad</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Juego o herramienta</th><th scope="col">Compatibilidad</th></tr></thead>
+            <tbody>
+              <tr><td>Assetto Corsa (2014), PC, Steam, versión 1.16</td><td><span class="tag tag--ok">SÍ</span> Los circuitos se generan en el formato del Assetto Corsa original.</td></tr>
+              <tr><td>Content Manager</td><td><span class="tag tag--ok">SÍ</span> Compatible, no obligatorio.</td></tr>
+              <tr><td>Custom Shaders Patch (CSP)</td><td><span class="tag tag--ok">SÍ</span> Compatible, no obligatorio; mejora el aspecto y aguanta mejor los circuitos pesados.</td></tr>
+              <tr><td>Assetto Corsa Competizione</td><td><span class="tag tag--error">NO</span> No admite circuitos de mods.</td></tr>
+              <tr><td>Assetto Corsa EVO</td><td><span class="tag tag--error">NO</span> Formato distinto.</td></tr>
+              <tr><td>PlayStation / Xbox</td><td><span class="tag tag--error">NO</span> Las consolas no admiten mods.</td></tr>
+              <tr><td>Sistema del editor</td><td>Windows 10/11 de 64 bits; DirectX 12, Vulkan u OpenGL 3.3.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--warn">
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div><span class="callout-title">Todavía en pruebas</span>
+            <p>Aún no se ha probado ningún circuito dentro del juego. Si encuentras algún problema al cargarlos, avísanos desde los comentarios de la <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">página de itch.io</a>.</p></div>
         </div>
       </div>
     </div>
@@ -424,7 +448,7 @@
                 <li><strong>Guardar</strong> (<kbd>Ctrl</kbd>+<kbd>S</kbd>) y <strong>Guardar como</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>): archivo <code>.actrack</code>. Se escribe primero en un temporal y luego se renombra: un fallo nunca estropea el archivo anterior.</li>
                 <li><strong>Abrir</strong> (<kbd>Ctrl</kbd>+<kbd>O</kbd>), <strong>recientes</strong> (los 6 últimos), <strong>Nuevo proyecto</strong> (pide confirmación).</li>
                 <li><strong>Autoguardado</strong> cada 1–15 min (3 por defecto) y al cerrar. Va aparte y nunca sobrescribe tu proyecto. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>.</li>
-                <li><strong>Legal:</strong> sección del panel con el aviso de copyright (programa gratuito, todos los derechos reservados; no afiliado a Kunos Simulazioni ni a 505 Games) y el botón <em>Términos de uso, aviso legal y licencias</em>.</li>
+                <li><strong>Legal:</strong> sección del panel con la versión y el aviso de copyright (programa gratuito, todos los derechos reservados; no afiliado a Kunos Simulazioni ni a 505 Games) y dos botones: <em>Términos de uso, aviso legal y licencias</em> y <em>Página oficial y actualizaciones</em>, que abre la página de itch.io en el navegador.</li>
               </ul>
               <div class="split">
                 <div class="callout callout--ok" style="margin:0">
@@ -1031,7 +1055,7 @@
           <div class="callout callout--ok">
             <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
             <div><span class="callout-title">Seguridad</span>
-              <p>Nunca sobrescribe un circuito que no haya creado AC Tracker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
+              <p>Nunca sobrescribe un circuito que no haya creado AC Trackmaker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
           </div>
         </div>
         <div>
@@ -1049,7 +1073,7 @@
     │                  <span class="c">(+ créditos en la descripción si está activado)</span>
     ├── <span class="f">outline.png</span>
     └── <span class="f">preview.png</span>    <span class="c">Captura de la vista 3D sin la interfaz</span></code></pre>
-          <p class="muted"><code>CREDITOS.txt</code> incluye el nombre y autor del circuito, «Creado con AC Tracker», las fuentes de datos con su cita, el contenido aportado por el autor y los avisos de licencia.</p>
+          <p class="muted"><code>CREDITOS.txt</code> empieza con «Creado con AC Trackmaker (editor independiente, no afiliado a Kunos Simulazioni ni a 505 Games).» y el enlace a la descarga oficial del editor. Después incluye el nombre y autor del circuito, las fuentes de datos con su cita, el contenido aportado por el autor y los avisos de licencia. Con <em>Añadir los créditos a la descripción</em> activado, la descripción del circuito en el juego empieza por «Creado con AC Trackmaker» con el enlace a itch.io y sigue con las fuentes de datos.</p>
         </div>
       </div>
 
@@ -1151,7 +1175,7 @@
         <div class="callout callout--tip">
           <svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg>
           <div><span class="callout-title">Datos de usuario en Windows</span>
-            <p><code>%APPDATA%\Godot\app_userdata\AC_tracker\</code></p></div>
+            <p><code>%APPDATA%\Godot\app_userdata\AC Trackmaker\</code></p><p>Si tenías una versión anterior (que usaba la carpeta <code>AC_tracker</code>), la primera vez se copian solos los ajustes y el autoguardado. Los proyectos siguen siendo <code>.actrack</code> y las carpetas de circuitos exportados siguen llevando <code>ac_tracker.txt</code>, así que todo lo creado antes sigue siendo compatible.</p></div>
         </div>
       </div>
     </div>
@@ -1231,7 +1255,7 @@
         <div class="acc-item">
           <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn">¿Puedo publicar un circuito con imagen de satélite?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
           <div class="acc-panel" id="faq-11" role="region" aria-labelledby="faq-11-btn" hidden>
-            <p>Sí. Todas las fuentes tienen licencia abierta y permiten compartirlo y venderlo citando la fuente. AC Tracker escribe las citas en <code>CREDITOS.txt</code>: consérvalo y pon los créditos donde lo publiques. Consulta los <a href="#creditos">créditos</a>.</p>
+            <p>Sí. Todas las fuentes tienen licencia abierta y permiten compartirlo y venderlo citando la fuente. AC Trackmaker escribe las citas en <code>CREDITOS.txt</code>: consérvalo y pon los créditos donde lo publiques. Consulta los <a href="#creditos">créditos</a>.</p>
           </div>
         </div>
         <div class="acc-item">
@@ -1294,7 +1318,7 @@
       <div class="callout callout--tip">
         <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
         <div><span class="callout-title">Al publicar</span>
-          <p>Todas las fuentes permiten compartir y vender el circuito citando la fuente. AC Tracker escribe las citas en <code>CREDITOS.txt</code> al exportar: consérvalo y pon los créditos donde publiques el circuito.</p></div>
+          <p>Todas las fuentes permiten compartir y vender el circuito citando la fuente. AC Trackmaker escribe las citas en <code>CREDITOS.txt</code> al exportar: consérvalo y pon los créditos donde publiques el circuito.</p></div>
       </div>
       <p class="muted"><svg class="icon" aria-hidden="true" style="width:18px;height:18px;vertical-align:-4px;stroke:#9a9ca5"><use href="#i-scale"/></svg> Esto es orientativo, no asesoría legal.</p>
     </div>
@@ -1315,8 +1339,8 @@
         <div class="panel">
           <h3>Términos de uso</h3>
           <ul>
-            <li><strong>Programa gratuito.</strong> © 2026 Lucas P., todos los derechos reservados.</li>
-            <li>Se puede <strong>descargar y usar gratis</strong>. Descárgalo solo desde la página oficial en <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a>.</li>
+            <li><strong>Programa gratuito.</strong> AC Trackmaker 1.0.2 © 2026 Lucas P., todos los derechos reservados.</li>
+            <li>Se puede <strong>descargar y usar gratis</strong>. Para compartirlo, enlaza a la descarga oficial en <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a> en vez de volver a subir el programa.</li>
             <li>Sin permiso escrito <strong>no se puede</strong> modificar, descompilar, redistribuir, vender, subir a otras webs, quitar sus avisos ni usar su nombre.</li>
             <li><strong>Los circuitos que creas son tuyos:</strong> puedes publicarlos y venderlos. Si usan datos del mapa real, conserva <code>CREDITOS.txt</code>.</li>
             <li>Se ofrece <strong>sin garantía</strong>.</li>
@@ -1344,7 +1368,7 @@
           <div><span class="callout-title">Sin cuentas, sin publicidad y sin estadísticas de uso</span>
             <p>Todo lo que haces se queda en tu ordenador.</p></div>
         </div>
-        <p>Solo se conecta a internet al usar el <strong>mapa real</strong>, y solo a estos servidores, a los que envía únicamente su nombre y versión:</p>
+        <p>Solo se conecta a internet al usar el <strong>mapa real</strong>, y solo a estos servidores, a los que envía como identificación (User-Agent) solo su nombre, su versión y la dirección de su página de descarga, nada más:</p>
         <ul class="split" style="list-style:none;padding:0;gap:6px">
           <li><code>tile.openstreetmap.org</code></li>
           <li><code>nominatim.openstreetmap.org</code></li>
@@ -1385,12 +1409,11 @@
           <h3>Aviso legal</h3>
           <ul>
             <li><strong>Responsable:</strong> Lucas P.</li>
-            <!-- PENDIENTE: forma de contacto (correo o perfil de GitHub) -->
-            <li><strong>Contacto:</strong> <span class="muted">[contacto pendiente]</span></li>
-            <li><strong>Finalidad:</strong> web informativa y sin ánimo de lucro que presenta y documenta AC Tracker. No vende nada ni muestra publicidad.</li>
-            <li><strong>Contenido:</strong> la información es orientativa. AC Tracker es un proyecto en desarrollo y puede cambiar; se ofrece tal cual, sin garantías.</li>
-            <li><strong>Marcas:</strong> Assetto Corsa y el resto de marcas citadas pertenecen a sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</li>
-            <li><strong>Licencia de esta web:</strong> el código de la web (HTML, CSS y JavaScript) se publica bajo licencia <strong>MIT</strong>. <strong>No incluye el programa AC Tracker</strong>, que es gratuito pero con todos los derechos reservados (ver <a href="#terminos">Términos de uso del programa</a>). La tipografía tiene su propia licencia (ver <a href="#creditos">Créditos</a>).</li>
+            <li><strong>Contacto:</strong> comentarios de la <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">página de AC Trackmaker en itch.io</a>.</li>
+            <li><strong>Finalidad:</strong> web informativa y sin ánimo de lucro que presenta y documenta AC Trackmaker. No vende nada ni muestra publicidad.</li>
+            <li><strong>Contenido:</strong> la información es orientativa. AC Trackmaker es un proyecto en desarrollo y puede cambiar; se ofrece tal cual, sin garantías.</li>
+            <li><strong>Marcas:</strong> Assetto Corsa y el resto de marcas citadas pertenecen a sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</li>
+            <li><strong>Licencia de esta web:</strong> el código de la web (HTML, CSS y JavaScript) se publica bajo licencia <strong>MIT</strong>. <strong>No incluye el programa AC Trackmaker</strong>, que es gratuito pero con todos los derechos reservados (ver <a href="#terminos">Términos de uso del programa</a>). La tipografía tiene su propia licencia (ver <a href="#creditos">Créditos</a>).</li>
             <li><strong>Datos de terceros:</strong> las fuentes de mapas, relieve e imágenes y sus condiciones están en <a href="#creditos">Créditos y licencias</a>.</li>
           </ul>
         </div>
@@ -1420,10 +1443,10 @@
 <footer class="site-footer">
   <div class="kerb" aria-hidden="true"></div>
   <div class="container">
-    <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKER</a>
+    <a class="logo" href="#inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
     <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
-    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Tracker es un proyecto independiente, no afiliado.</p>
-    <p>© 2026 Lucas P. · AC Tracker: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
+    <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
+    <p>© 2026 Lucas P. · AC Trackmaker 1.0.2: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
     <p><a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">Descargar en itch.io</a> · <a href="#terminos">Términos de uso</a> · <a href="#legal">Aviso legal y privacidad</a> · <a href="#creditos">Créditos y licencias</a></p>
   </div>
 </footer>
