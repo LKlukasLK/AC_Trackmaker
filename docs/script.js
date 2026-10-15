@@ -84,6 +84,29 @@
   window.addEventListener("resize", updateActive);
   updateActive();
 
+  /* ---------- Galería: visor a pantalla completa ---------- */
+  var lb = document.getElementById("lightbox");
+  if (lb) {
+    var shots = Array.prototype.slice.call(document.querySelectorAll(".gal-open"));
+    var cur = 0;
+    var show = function (i) {
+      cur = (i + shots.length) % shots.length;
+      var img = shots[cur].querySelector("img");
+      lb.querySelector("img").src = shots[cur].getAttribute("data-full");
+      lb.querySelector("img").alt = img.alt;
+      lb.querySelector(".lb-cap").textContent = shots[cur].parentNode.querySelector("figcaption").textContent;
+    };
+    shots.forEach(function (b, i) { b.addEventListener("click", function () { show(i); lb.showModal(); }); });
+    lb.querySelector(".lb-prev").addEventListener("click", function () { show(cur - 1); });
+    lb.querySelector(".lb-next").addEventListener("click", function () { show(cur + 1); });
+    lb.querySelector(".lb-close").addEventListener("click", function () { lb.close(); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); }); // clic fuera de la imagen
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") show(cur - 1);
+      if (e.key === "ArrowRight") show(cur + 1);
+    });
+  }
+
   /* ---------- Buscador de la guía de herramientas ---------- */
   var input = document.getElementById("tool-search");
   if (!input) return; // solo la página de herramientas tiene buscador

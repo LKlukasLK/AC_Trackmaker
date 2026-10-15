@@ -188,7 +188,81 @@
   <!-- =========================================================
        CÓMO FUNCIONA
        ========================================================= -->
-  <section class="section section--alt" id="como-funciona" aria-labelledby="titulo-como">
+  <section class="section section--alt" id="galeria" aria-labelledby="titulo-galeria">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Capturas</span>
+        <h2 id="titulo-galeria">Galería</h2>
+      </div>
+      <div class="gallery">
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/01_asfalto_y_pianos.webp" aria-label="Ampliar: Carretera con asfalto realista y pianos rojos y blancos en el editor">
+            <picture><source srcset="imagenes/galeria/01_asfalto_y_pianos.webp" type="image/webp"><img src="imagenes/galeria/01_asfalto_y_pianos.png" alt="Carretera con asfalto realista y pianos rojos y blancos en el editor" loading="lazy"></picture>
+          </button>
+          <figcaption>Asfalto con gravilla, rodadas y líneas gastadas, y pianos con estrías y desgaste. Todo se genera dentro del programa y se exporta con relieve al juego.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/02_conectores_rotonda.png" aria-label="Ampliar: Rotonda con carreteras enganchadas a sus salidas">
+            <picture><img src="imagenes/galeria/02_conectores_rotonda.png" alt="Rotonda con carreteras enganchadas a sus salidas" loading="lazy"></picture>
+          </button>
+          <figcaption>Las carreteras se enganchan solas a rotondas, túneles, gasolineras y modelos de Blender. Si mueves el objeto, la carretera lo sigue.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/03_linea_de_meta.png" aria-label="Ampliar: Línea de meta con arco y con pórtico a cuadros">
+            <picture><img src="imagenes/galeria/03_linea_de_meta.png" alt="Línea de meta con arco y con pórtico a cuadros" loading="lazy"></picture>
+          </button>
+          <figcaption>Línea de meta personalizable: arco, pórtico, columna o solo la línea en el suelo, con tu propia imagen.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/04_calle_de_boxes.png" aria-label="Ampliar: Calle de boxes que se une a la carretera antes de la salida">
+            <picture><img src="imagenes/galeria/04_calle_de_boxes.png" alt="Calle de boxes que se une a la carretera antes de la salida" loading="lazy"></picture>
+          </button>
+          <figcaption>Calle de boxes automática: un clic y se crea junto a la salida, con sus boxes, y se incorpora a la carretera en cuña.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/05_tipos_de_carretera.webp" aria-label="Ampliar: Texturas de asfalto, mojado, nieve y tierra">
+            <picture><source srcset="imagenes/galeria/05_tipos_de_carretera.webp" type="image/webp"><img src="imagenes/galeria/05_tipos_de_carretera.png" alt="Texturas de asfalto, mojado, nieve y tierra" loading="lazy"></picture>
+          </button>
+          <figcaption>Cuatro tipos de carretera, cada uno con su textura y su agarre en el juego: normal, mojado, nieve y tierra.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/06_carretera_de_tierra.png" aria-label="Ampliar: Camino de tierra que se funde con la hierba">
+            <picture><img src="imagenes/galeria/06_carretera_de_tierra.png" alt="Camino de tierra que se funde con la hierba" loading="lazy"></picture>
+          </button>
+          <figcaption>La carretera de tierra funde sus bordes con el suelo, sin cortes rectos.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/07_hierba.webp" aria-label="Ampliar: Matas de hierba pintadas junto a un circuito">
+            <picture><source srcset="imagenes/galeria/07_hierba.webp" type="image/webp"><img src="imagenes/galeria/07_hierba.png" alt="Matas de hierba pintadas junto a un circuito" loading="lazy"></picture>
+          </button>
+          <figcaption>Hierba en cuatro tipos (corta, alta, seca y con flores) o con tu propio PNG. Se pinta con pincel, también sobre el mapa real.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/08_catalogo_estructuras.png" aria-label="Ampliar: Ventana del catálogo de estructuras con una gasolinera">
+            <picture><img src="imagenes/galeria/08_catalogo_estructuras.png" alt="Ventana del catálogo de estructuras con una gasolinera" loading="lazy"></picture>
+          </button>
+          <figcaption>Catálogo de estructuras: edificios, casas, gasolineras, fuentes, rotondas, gradas y modelos importados de Blender.</figcaption>
+        </figure>
+        <figure class="gal-item">
+          <button type="button" class="gal-open" data-full="imagenes/galeria/09_cesped_automatico.webp" aria-label="Ampliar: Terreno con césped y matas alrededor de la pista">
+            <picture><source srcset="imagenes/galeria/09_cesped_automatico.webp" type="image/webp"><img src="imagenes/galeria/09_cesped_automatico.png" alt="Terreno con césped y matas alrededor de la pista" loading="lazy"></picture>
+          </button>
+          <figcaption>Césped automático: textura de hierba en el suelo y matas junto a las carreteras, con la cantidad que elijas.</figcaption>
+        </figure>
+      </div>
+      <p class="muted gal-note">Capturas del editor (versión 1.0.2). La iluminación en Assetto Corsa es distinta.</p>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+    <img alt="">
+    <p class="lb-cap"></p>
+    <button type="button" class="lb-btn lb-prev" aria-label="Imagen anterior">‹</button>
+    <button type="button" class="lb-btn lb-next" aria-label="Imagen siguiente">›</button>
+    <button type="button" class="lb-btn lb-close" aria-label="Cerrar">×</button>
+  </dialog>
+
+  <section class="section" id="como-funciona" aria-labelledby="titulo-como">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Flujo de trabajo típico</span>
