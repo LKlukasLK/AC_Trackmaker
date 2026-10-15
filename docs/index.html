@@ -176,6 +176,12 @@
           <h3>Proyectos con autoguardado</h3>
           <p>Guarda tu trabajo en proyectos; el autoguardado va aparte y nunca sobrescribe tu proyecto.</p>
         </article>
+        <article class="card feature">
+          <span class="feature-num" aria-hidden="true">08</span>
+          <div class="icon-box"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg></div>
+          <h3>Texturas con relieve</h3>
+          <p>Asfalto con gravilla, rodadas de goma, parches y líneas gastadas; pianos con estrías y pintura saltada; mojado, nieve y tierra. El relieve se ve en el editor y se exporta al juego.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -232,7 +238,7 @@
         <div class="callout callout--warn">
           <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
           <div><span class="callout-title">Todavía en pruebas</span>
-            <p>Aún no se ha probado ningún circuito dentro del juego. Si encuentras algún problema al cargarlos, avísanos desde los comentarios de la <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">página de itch.io</a>.</p></div>
+            <p>Aún no se ha probado ningún circuito dentro del juego (tampoco la IA, los boxes, los tipos de carretera, la hierba ni el relieve de las texturas). Si encuentras algún problema al cargarlos, avísanos desde los comentarios de la <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">página de itch.io</a>.</p></div>
         </div>
       </div>
     </div>
@@ -488,7 +494,7 @@
               <ul>
                 <li><strong>Clic:</strong> añade punto. <strong>Clic derecho</strong> / <kbd>Esc</kbd>: termina. <kbd>Ctrl</kbd>+<kbd>Z</kbd>: quita el último punto.</li>
                 <li><strong>Clic en el extremo de una pista:</strong> la continúa (se pone <span class="dot dot--orange" aria-hidden="true"></span>naranja al pasar por encima).</li>
-                <li>El punto se engancha a la boca de un túnel o al final de una salida de rotonda si está cerca.</li>
+                <li><strong>Mover puntos:</strong> con la pista terminada, arrastra cualquier <span class="dot dot--yellow" aria-hidden="true"></span>esfera amarilla para mover ese punto; la carretera se recalcula al soltar. <kbd>Ctrl</kbd>+<kbd>Z</kbd> deshace el último movimiento.</li>
               </ul>
               <h4>Ajustes</h4>
               <div class="table-wrap">
@@ -499,7 +505,9 @@
                     <tr><td>Suavizado de curvas</td><td>Catmull-Rom; se muestrea cada 2 m como máximo.</td></tr>
                     <tr><td>Circuito cerrado</td><td>Une el final con el principio.</td></tr>
                     <tr><td>Seguir el relieve</td><td>La carretera toma la altura del suelo entre puntos, con media de 12 m para quitar baches; los extremos respetan la altura del clic.</td></tr>
-                    <tr><td>Pianos rojo y blanco</td><td>Ancho 0,5–3 m.</td></tr>
+                    <tr><td>Pianos rojo y blanco</td><td>Ancho 0,5–3 m. Se pueden quitar en cada carretera desactivando la opción con la carretera seleccionada; en nieve y tierra lo normal es quitarlos.</td></tr>
+                    <tr><td>Calle de boxes</td><td>El juego trata esa carretera como zona de boxes (superficie <code>PIT</code>). Assetto Corsa solo admite una.</td></tr>
+                    <tr><td>Igualar el ancho al conectar</td><td>Al enganchar a un conector, la carretera toma el ancho de la calzada del objeto.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -509,6 +517,43 @@
                 <li><strong>Eliminar pista seleccionada.</strong></li>
                 <li><strong>Borrar todas.</strong></li>
               </ul>
+              <div class="sub-card">
+                <h4>Tipos de carretera</h4>
+                <p>Cada carretera lleva su textura y su agarre en el juego (valores de <code>surfaces.ini</code>):</p>
+                <div class="table-wrap">
+                  <table>
+                    <thead><tr><th scope="col">Tipo</th><th scope="col">Aspecto</th><th scope="col">Superficie</th><th scope="col">Agarre</th></tr></thead>
+                    <tbody>
+                      <tr><td>Normal</td><td>Asfalto</td><td><code>ROAD</code></td><td>0,99</td></tr>
+                      <tr><td>Mojado</td><td>Asfalto oscuro con charcos y brillo</td><td><code>WET</code></td><td>0,85</td></tr>
+                      <tr><td>Nieve</td><td>Nieve pisada en las rodadas</td><td><code>SNOW</code></td><td>0,55</td></tr>
+                      <tr><td>Tierra</td><td>Grava con roderas; los bordes se funden con el suelo</td><td><code>DIRT</code></td><td>0,75</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="callout callout--tip" style="margin-bottom:0">
+                  <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                  <div><p>Assetto Corsa no simula agua, nieve ni tierra suelta: solo cambian el agarre, las vibraciones y la suciedad de los neumáticos.</p></div>
+                </div>
+              </div>
+              <div class="sub-card">
+                <h4>Conectores</h4>
+                <p>Las bocas de los túneles, las salidas de las rotondas, la entrada y la salida de las gasolineras y los modelos de Blender tienen conectores (<span class="dot dot--blue" aria-hidden="true"></span>flecha azul con un círculo).</p>
+                <ul>
+                  <li>Si empiezas o acabas una carretera dentro del círculo, se engancha alineada con la calzada del objeto y toma su ancho (opción <em>Igualar el ancho al conectar</em>).</li>
+                  <li>Si después mueves, giras o escalas el objeto, las carreteras enganchadas lo siguen.</li>
+                  <li>El terreno se adapta solo en los 40 m junto a la unión.</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Texturas generadas por el programa</h4>
+                <ul>
+                  <li>Asfalto con gravilla, rodadas de goma, parches y líneas blancas gastadas.</li>
+                  <li>Pianos con estrías, goma, pintura saltada y escalón en el borde exterior.</li>
+                  <li>Mojado, nieve y tierra con su propio aspecto.</li>
+                  <li>En el editor se ven con relieve y ese relieve se exporta al juego.</li>
+                </ul>
+              </div>
               <!-- PENDIENTE: captura de la herramienta Trazado -->
               <figure class="shot">
                 <div class="placeholder" role="img" aria-label="Marcador: captura de la herramienta Trazado (pendiente)">
@@ -690,8 +735,21 @@
                 <li>En circuitos cerrados, 3 sectores (<code>AC_TIME_1</code> / <code>AC_TIME_2</code>).</li>
                 <li>En tramos abiertos: <code>AC_AB_START</code> / <code>AC_AB_FINISH</code>.</li>
               </ul>
+              <h4>Personalizar la línea de meta</h4>
+              <ul>
+                <li><strong>Forma:</strong> Sin decoración, Línea en el suelo, Línea y pórtico, Línea y arco o Línea y columna.</li>
+                <li><strong>Ancho de la línea</strong> 0,3–4 m y <strong>altura del pórtico</strong> 4–12 m.</li>
+                <li><strong>Imagen propia</strong> para la línea y el cartel (por defecto, cuadros blancos y negros). Se exporta con el circuito.</li>
+              </ul>
+              <h4>Tramos de punto a punto (rally)</h4>
+              <ul>
+                <li>Desactiva <em>Circuito cerrado</em>: se crean la salida y la llegada en vez de la meta.</li>
+                <li>La parrilla solo usa el espacio entre el inicio de la carretera y la salida: si no caben todos los coches, se ponen los que quepan y se avisa.</li>
+                <li><em>Salida estilo rally</em> pone la parrilla en fila india por el centro.</li>
+              </ul>
               <h4>Boxes</h4>
               <p>Clic donde va cada box (<code>AC_PIT_n</code>), orientados según la pista + <em>Giro de los boxes</em> (0–315° en pasos de 45°).</p>
+              <p><strong>Crear calle de boxes junto a la salida:</strong> crea sola una calle de boxes al lado de la carretera, detrás de la salida, con un box cada 10 m (tantos como puestos de parrilla). En sus últimos metros se pega al asfalto, se quita el piano y se cierra en cuña, como un carril de incorporación, antes de la línea. Al pulsarlo otra vez se sustituye; si mueves puntos de la carretera antes de la salida, vuelve a pulsarlo.</p>
               <h4>Ajustes</h4>
               <p>Puestos 1–40, separación 5–16 m, invertir sentido, sectores.</p>
               <div class="table-wrap">
@@ -730,7 +788,7 @@
               <kbd class="key--big" title="Tecla 7">7</kbd>
             </header>
             <div class="tool-body">
-              <p>Arriba se elige: <strong>Árboles</strong>, <strong>Público</strong> o <strong>Estructuras</strong>.</p>
+              <p>Arriba se elige: <strong>Árboles</strong>, <strong>Público</strong>, <strong>Hierba</strong> o <strong>Estructuras</strong>.</p>
 
               <div class="sub-card">
                 <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-tree"/></svg> Árboles</h4>
@@ -751,6 +809,25 @@
                   <li><strong>Rangos:</strong> Radio 1–30 m · Separación 0,6–5 m · Altura 1,3–2,2 m · Variación 0–0,6.</li>
                   <li>Se pueden pintar encima de las gradas (quedan en los escalones).</li>
                 </ul>
+              </div>
+
+              <div class="sub-card">
+                <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-tree"/></svg> Hierba</h4>
+                <ul>
+                  <li>Matas de hierba en X con cuatro tipos de serie: <strong>Corta, Alta, Seca, Con flores</strong>; o <em>Mezcla</em>, o un PNG propio con fondo transparente.</li>
+                  <li>Se pintan con el pincel (radio, separación, altura y variación) en cualquier terreno, también sobre el mapa real con imagen de satélite.</li>
+                </ul>
+                <h4>Césped automático</h4>
+                <p>Para el terreno <strong>sin imagen de satélite</strong>:</p>
+                <ul>
+                  <li>Textura de césped en el suelo, con tamaño ajustable (1–20 m) o una imagen propia (PNG/JPG).</li>
+                  <li>Matas de hierba automáticas a los dos lados de las carreteras, del tipo de hierba elegido: <strong>Cantidad</strong> 0,05–3 por m² y <strong>Distancia a la carretera</strong> 5–100 m. Se recolocan solas al exportar.</li>
+                  <li>Sobre el mapa real con satélite no se aplica: ahí la hierba se pinta a mano.</li>
+                </ul>
+                <div class="callout callout--warn" style="margin-bottom:0">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+                  <div><span class="callout-title">Ojo con el peso</span><p>Cada mata añade más o menos 1 KB al circuito (el panel muestra el total). Máximo 200 000 matas automáticas.</p></div>
+                </div>
               </div>
 
               <div class="sub-card">
@@ -1052,6 +1129,11 @@
             <li><strong>Créditos y licencias</strong>Revisa la lista de fuentes de datos que lleva el circuito (relieve e imagen) y del contenido importado (imágenes PNG, modelos <code>.glb</code>, relieve de Blender): <em>debes tener derecho a usarlo</em>. El interruptor <em>Añadir los créditos a la descripción</em> está activado por defecto; el botón <em>Ver aviso legal y licencias</em> abre los textos completos.</li>
             <li><strong>Exportar a Assetto Corsa</strong>Pulsa el botón y listo.</li>
           </ol>
+          <div class="callout callout--tip">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div><span class="callout-title">Rivales e IA</span>
+              <p>Con la línea de la IA ya se pueden usar rivales, la línea ideal de ayuda y el modo práctica con IA. La línea va por el centro de la pista y es un punto de partida: para una IA rápida, grábala en el juego y sustituye <code>ai/fast_lane.ai</code>.</p></div>
+          </div>
           <div class="callout callout--ok">
             <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
             <div><span class="callout-title">Seguridad</span>
@@ -1065,8 +1147,11 @@
 ├── <span class="f">map.png</span>            <span class="c">Mapa del trazado</span>
 ├── <span class="f">ac_tracker.txt</span>     <span class="c">Marca: solo se sobrescriben carpetas creadas por el editor</span>
 ├── <span class="f">CREDITOS.txt</span>       <span class="c">Créditos: fuentes de datos con su cita y avisos de licencia</span>
+├── <span class="d">ai/</span>
+│   ├── <span class="f">fast_lane.ai</span>   <span class="c">Línea de la IA y línea ideal (un punto cada 2 m)</span>
+│   └── <span class="f">pit_lane.ai</span>    <span class="c">Solo si hay calle de boxes (IA a 80 km/h)</span>
 ├── <span class="d">data/</span>
-│   ├── <span class="f">surfaces.ini</span>   <span class="c">Superficies ROAD, KERB, GRASS y WALL</span>
+│   ├── <span class="f">surfaces.ini</span>   <span class="c">ROAD, KERB, GRASS, WET, SNOW, DIRT, PIT y WALL</span>
 │   └── <span class="f">map.ini</span>
 └── <span class="d">ui/</span>
     ├── <span class="f">ui_track.json</span>  <span class="c">Nombre, país, ciudad, autor, longitud, ancho, nº de boxes</span>
@@ -1083,7 +1168,9 @@
           <li>Piezas de menos de <strong>65 000 vértices</strong> (índices de 16 bits del kn5).</li>
           <li>El relieve a menos de <strong>300 m</strong> de una pista lleva colisión.</li>
           <li>El relieve se simplifica con la distancia a las pistas: mitad de detalle a partir de <strong>1 km</strong>, otra vez a <strong>4 km</strong> y a <strong>10 km</strong>.</li>
-          <li>Árboles y público con shader <code>ksPerPixelAT</code> y texturas DXT5, en piezas de <strong>250 m</strong> y sin colisión.</li>
+          <li>Carreteras y pianos con <code>ksPerPixelNM</code> (mapa de normales: el relieve de grietas, estrías, piedras y charcos también se ve en el juego); árboles, público y hierba con <code>ksPerPixelAT</code>; el resto con <code>ksPerPixel</code>. La tierra usa transparencia suave en los bordes.</li>
+          <li>Árboles, público y hierba con texturas DXT5, en piezas de <strong>250 m</strong> y sin colisión.</li>
+          <li><code>fast_lane.ai</code> sale de la meta en el sentido de carrera, con un punto cada 2 m y la velocidad estimada según las curvas.</li>
           <li>Aviso si el circuito pasa de <strong>3 millones de triángulos</strong>.</li>
         </ul>
       </details>
@@ -1262,6 +1349,12 @@
           <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn">¿Se pierde el trabajo si se cierra?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
           <div class="acc-panel" id="faq-12" role="region" aria-labelledby="faq-12-btn" hidden>
             <p>El autoguardado se hace cada 1–15 min (3 por defecto) y al cerrar. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>. Ojo: lo pintado en rojo sin aplicar en Detalle editable no se guarda.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-13" id="faq-13-btn">¿Lo que veo en el editor es lo que veré en el juego?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-13" role="region" aria-labelledby="faq-13-btn" hidden>
+            <p>Las texturas y el relieve, sí. La luz, el cielo, las sombras y el brillo los pone cada motor: en Assetto Corsa también dependen de la hora, del tiempo y de Custom Shaders Patch.</p>
           </div>
         </div>
       </div>
