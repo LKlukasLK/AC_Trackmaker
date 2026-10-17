@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AC Trackmaker — Editor de circuitos para Assetto Corsa</title>
   <meta name="description" content="AC Trackmaker: programa gratuito para Windows para crear circuitos de Assetto Corsa sin modelar en 3D y exportarlos directamente al juego.">
-  <meta name="theme-color" content="#232429">
-  <link rel="icon" href="favicon.ico">
+  <meta name="theme-color" content="#1d2027">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -56,7 +61,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
       <span>Menú</span>
@@ -85,13 +90,14 @@
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Editor de circuitos para Assetto Corsa</span>
+        <img class="hero-icon" src="icon.svg" alt="" width="112" height="112">
         <h1 id="titulo-inicio">AC <span>Trackmaker</span></h1>
         <p class="tagline">De una idea a un circuito jugable en Assetto Corsa, sin pasar por 3ds Max ni Blender.</p>
-        <p class="lead">Programa de escritorio para <strong>Windows</strong> para crear circuitos de <strong>Assetto Corsa</strong> sin modelar en 3D: dibujas la carretera, modelas el terreno, pones muros, túneles, decoración y spawns, y lo <strong>exportas directamente</strong> a la carpeta del juego (el <code>.kn5</code> y todos los archivos de datos).</p>
+        <p class="lead">Programa de escritorio para <strong>Windows</strong> y <strong>Linux</strong> para crear circuitos de <strong>Assetto Corsa</strong> sin modelar en 3D: dibujas la carretera, modelas el terreno, pones muros, túneles, decoración y spawns, y lo <strong>exportas directamente</strong> a la carpeta del juego (el <code>.kn5</code> y todos los archivos de datos).</p>
         <p>Puede traer el <strong>relieve real</strong> de cualquier lugar del mundo eligiendo una zona en un mapa (con ortofotos oficiales con licencia abierta), o un relieve hecho en <strong>Blender</strong> (glTF/GLB).</p>
         <ul class="badges" aria-label="Datos del proyecto">
           <li class="badge badge--green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratis</li>
-          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows</li>
+          <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg>Windows · Linux</li>
           <li class="badge"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Próximamente: noviembre 2026</li>
           <li class="badge badge--amber"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Proyecto en desarrollo</li>
         </ul>
@@ -323,7 +329,7 @@
         <div class="panel">
           <h3>Requisitos</h3>
           <ul>
-            <li><strong>Windows 10 u 11 de 64 bits.</strong></li>
+            <li><strong>Windows 10 u 11 de 64 bits</strong>, o <strong>Linux de 64 bits (x86_64)</strong> con OpenGL 3.3 o Vulkan.</li>
             <li>Tarjeta gráfica compatible con <strong>DirectX 12</strong>, <strong>Vulkan</strong> u <strong>OpenGL 3.3</strong>. El programa usa DirectX 12 y, si el equipo no lo tiene, pasa solo a Vulkan o a OpenGL 3.3 (modo compatibilidad). No hace falta configurar nada.</li>
             <li><strong>Internet</strong> solo para el mapa real (relieve, imágenes y buscador).</li>
             <li><strong>Assetto Corsa</strong> (PC, Steam) instalado para exportar directamente al juego. Ver <a href="#compatibilidad">compatibilidad</a>.</li>
@@ -332,8 +338,8 @@
         <div class="panel">
           <h3>Puesta en marcha</h3>
           <ol class="steps steps--compact">
-            <li><strong>Descarga</strong> <code>AC_Trackmaker.exe</code> (disponible en noviembre de 2026) desde <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a>.</li>
-            <li><strong>Ábrelo</strong> con doble clic: es un único archivo, no hay que instalar nada.</li>
+            <li><strong>Windows:</strong> descarga el instalador <code>AC_Trackmaker_Setup</code> desde <a href="https://lklukaslk.itch.io/ac-trackmaker" target="_blank" rel="noopener">itch.io</a> (disponible en noviembre de 2026). Va en español, muestra los términos de uso, se instala sin permisos de administrador (solo para tu usuario), crea accesos en el menú Inicio y, si quieres, en el escritorio, y se desinstala desde «Agregar o quitar programas» sin borrar tus proyectos. También estará el <code>AC_Trackmaker.exe</code> suelto, sin instalación.</li>
+            <li><strong>Linux:</strong> descarga el archivo <code>.tar.gz</code>, descomprímelo (clic derecho → <em>Extraer aquí</em>) y haz doble clic en <code>AC_Trackmaker.x86_64</code>. No hace falta instalar nada ni contraseña. Si no se abre: clic derecho → <em>Propiedades</em> → <em>Permisos</em> → «Permitir ejecutar el archivo como un programa».</li>
             <li>La primera vez sale la ventana <strong>«Términos de uso y aviso legal»</strong>: léela y pulsa <strong>Aceptar</strong>. Vuelve a salir una vez cuando se actualizan los términos (por ejemplo, con una versión nueva que los cambie).</li>
             <li>Sigue el <a href="#como-funciona">flujo de trabajo</a> para crear tu primer circuito.</li>
           </ol>
@@ -357,7 +363,8 @@
               <tr><td>Assetto Corsa Competizione</td><td><span class="tag tag--error">NO</span> No admite circuitos de mods.</td></tr>
               <tr><td>Assetto Corsa EVO</td><td><span class="tag tag--error">NO</span> Formato distinto.</td></tr>
               <tr><td>PlayStation / Xbox</td><td><span class="tag tag--error">NO</span> Las consolas no admiten mods.</td></tr>
-              <tr><td>Sistema del editor</td><td>Windows 10/11 de 64 bits; DirectX 12, Vulkan u OpenGL 3.3.</td></tr>
+              <tr><td>Sistema del editor</td><td>Windows 10/11 de 64 bits (DirectX 12, Vulkan u OpenGL 3.3) o Linux de 64 bits (OpenGL 3.3 o Vulkan).</td></tr>
+              <tr><td>Assetto Corsa en Linux (Steam + Proton)</td><td><span class="tag tag--ok">SÍ</span> El editor busca solo la carpeta de circuitos de Steam en Linux.</td></tr>
             </tbody>
           </table>
         </div>
@@ -386,7 +393,7 @@
 <footer class="site-footer">
   <div class="kerb" aria-hidden="true"></div>
   <div class="container">
-    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
     <p>© 2026 Lucas P. · AC Trackmaker: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>

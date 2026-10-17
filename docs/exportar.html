@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exportar a Assetto Corsa — AC Trackmaker</title>
   <meta name="description" content="Cómo exportar un circuito de AC Trackmaker a Assetto Corsa y qué archivos se generan.">
-  <meta name="theme-color" content="#232429">
-  <link rel="icon" href="favicon.ico">
+  <meta name="theme-color" content="#1d2027">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -56,7 +61,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
       <span>Menú</span>
@@ -106,7 +111,7 @@
           <div class="callout callout--ok">
             <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
             <div><span class="callout-title">Seguridad</span>
-              <p>Nunca sobrescribe un circuito que no haya creado AC Trackmaker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
+              <p>Los muros no se definen en <code>surfaces.ini</code> (WALL es un tipo interno de Assetto Corsa) y funcionan como muros en el juego. Nunca sobrescribe un circuito que no haya creado AC Trackmaker: si existe la carpeta sin <code>ac_tracker.txt</code>, se niega y pide otro nombre.</p></div>
           </div>
         </div>
         <div>
@@ -120,7 +125,7 @@
 │   ├── <span class="f">fast_lane.ai</span>   <span class="c">Línea de la IA y línea ideal (un punto cada 2 m)</span>
 │   └── <span class="f">pit_lane.ai</span>    <span class="c">Solo si hay calle de boxes (IA a 80 km/h)</span>
 ├── <span class="d">data/</span>
-│   ├── <span class="f">surfaces.ini</span>   <span class="c">ROAD, KERB, GRASS, WET, SNOW, DIRT, PIT y WALL</span>
+│   ├── <span class="f">surfaces.ini</span>   <span class="c">ROAD, KERB, GRASS, WET, SNOW, DIRT y PIT</span>
 │   └── <span class="f">map.ini</span>
 └── <span class="d">ui/</span>
     ├── <span class="f">ui_track.json</span>  <span class="c">Nombre, país, ciudad, autor, longitud, ancho, nº de boxes</span>
@@ -137,7 +142,7 @@
           <li>Piezas de menos de <strong>65 000 vértices</strong> (índices de 16 bits del kn5).</li>
           <li>El relieve a menos de <strong>300 m</strong> de una pista lleva colisión.</li>
           <li>El relieve se simplifica con la distancia a las pistas: mitad de detalle a partir de <strong>1 km</strong>, otra vez a <strong>4 km</strong> y a <strong>10 km</strong>.</li>
-          <li>Carreteras y pianos con <code>ksPerPixelNM</code> (mapa de normales: el relieve de grietas, estrías, piedras y charcos también se ve en el juego); árboles, público y hierba con <code>ksPerPixelAT</code>; el resto con <code>ksPerPixel</code>. La tierra usa transparencia suave en los bordes.</li>
+          <li>Carreteras y pianos con <code>ksPerPixelNM</code> (mapa de normales: el relieve de grietas, estrías, piedras y charcos también se ve en el juego); árboles, público y hierba con <code>ksPerPixelAT</code>; el resto con <code>ksPerPixel</code>. El suelo junto a la carretera usa <code>ksMultilayer</code>: la ortofoto a máxima resolución (2048 px por bloque) más un grano que se repite, para que de cerca no se vea borroso. La tierra usa transparencia suave en los bordes.</li>
           <li>Árboles, público y hierba con texturas DXT5, en piezas de <strong>250 m</strong> y sin colisión.</li>
           <li><code>fast_lane.ai</code> sale de la meta en el sentido de carrera, con un punto cada 2 m y la velocidad estimada según las curvas.</li>
           <li>Aviso si el circuito pasa de <strong>3 millones de triángulos</strong>.</li>
@@ -167,7 +172,7 @@
 <footer class="site-footer">
   <div class="kerb" aria-hidden="true"></div>
   <div class="container">
-    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
     <p>© 2026 Lucas P. · AC Trackmaker: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>

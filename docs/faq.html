@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Preguntas frecuentes — AC Trackmaker</title>
   <meta name="description" content="Preguntas frecuentes y limitaciones conocidas de AC Trackmaker.">
-  <meta name="theme-color" content="#232429">
-  <link rel="icon" href="favicon.ico">
+  <meta name="theme-color" content="#1d2027">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -56,7 +61,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html" aria-label="AC Trackmaker — ir al inicio"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
       <span>Menú</span>
@@ -146,7 +151,7 @@
         <div class="acc-item">
           <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn">He movido el .glb del relieve y el proyecto abre sin él.<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
           <div class="acc-panel" id="faq-10" role="region" aria-labelledby="faq-10-btn" hidden>
-            <p>El relieve no va dentro del proyecto: se guarda la ruta a su <code>.glb</code> y se reimporta al abrir. Vuelve a ponerlo en su ruta y abre el proyecto de nuevo.</p>
+            <p>El relieve no va dentro del proyecto: se guarda la ruta a su <code>.glb</code> y se reimporta al abrir. Si es del mapa real, se vuelve a descargar solo. Si es de Blender, vuelve a ponerlo en su ruta y abre el proyecto de nuevo.</p>
           </div>
         </div>
         <div class="acc-item">
@@ -159,6 +164,12 @@
           <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn">¿Se pierde el trabajo si se cierra?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
           <div class="acc-panel" id="faq-12" role="region" aria-labelledby="faq-12-btn" hidden>
             <p>El autoguardado se hace cada 1–15 min (3 por defecto) y al cerrar. Al iniciar puedes usar <em>Recuperar la sesión anterior</em>. Ojo: lo pintado en rojo sin aplicar en Detalle editable no se guarda.</p>
+          </div>
+        </div>
+        <div class="acc-item">
+          <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-14" id="faq-14-btn">¿Funciona con Assetto Corsa en Linux?<svg class="icon chev" aria-hidden="true"><use href="#i-chevron"/></svg></button></h3>
+          <div class="acc-panel" id="faq-14" role="region" aria-labelledby="faq-14-btn" hidden>
+            <p>Assetto Corsa se juega en Linux con Steam y Proton. El editor busca solo la carpeta de circuitos en las rutas de Steam de Linux (<code>~/.steam/steam</code>, <code>~/.local/share/Steam</code> y la versión Flatpak de Steam). Si no la encuentra, elígela a mano en Exportar AC.</p>
           </div>
         </div>
         <div class="acc-item">
@@ -183,7 +194,7 @@
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La fuente de imagen principal se decide por el centro de la zona; en fronteras se completa con la del país vecino. Fuera de España, Francia, Suiza, Países Bajos, Austria y EE. UU. la imagen es de 10 m por píxel (Sentinel-2) y de cerca se ve borrosa.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El fondo del mar se recorta a −60 m.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>La imagen se ve a ~0,8 m/píxel junto a la carretera aunque la fuente tenga más.</span></li>
-        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>El proyecto depende del <code>.glb</code> del relieve.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Un proyecto con relieve de Blender depende de su <code>.glb</code> (el del mapa real se vuelve a descargar solo).</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Lo pintado en rojo sin aplicar no se guarda.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Deshacer una estructura no deshace el aplanado del terreno (se deshace en Elevaciones). Sobre relieve sin detalle editable no se aplana.</span></li>
         <li><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span>Proyecto en desarrollo: algunos aspectos (orientación de spawns, rendimiento de circuitos muy grandes) pueden necesitar ajustes al probarlos en el juego.</span></li>
@@ -195,7 +206,7 @@
 <footer class="site-footer">
   <div class="kerb" aria-hidden="true"></div>
   <div class="container">
-    <a class="logo" href="index.html"><span class="logo-flag" aria-hidden="true"></span>AC TRACKMAKER</a>
+    <a class="logo" href="index.html"><img class="logo-icon" src="icon.svg" alt="" width="36" height="36">AC TRACKMAKER</a>
     <p>Editor de circuitos para Assetto Corsa para Windows · Proyecto en desarrollo.</p>
     <p>Assetto Corsa es una marca de sus respectivos propietarios. AC Trackmaker es un proyecto independiente, no afiliado.</p>
     <p>© 2026 Lucas P. · AC Trackmaker: gratuito, todos los derechos reservados · Código de esta web: licencia MIT</p>
