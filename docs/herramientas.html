@@ -303,7 +303,8 @@
               </div>
               <h4>Acciones</h4>
               <ul>
-                <li><strong>Adaptar terreno a las pistas:</strong> sube/baja el terreno bajo las pistas (se deshace desde Elevaciones).</li>
+                <li><strong>Adaptar terreno a las pistas:</strong> sube/baja el terreno bajo todas las pistas a la vez (se deshace desde Elevaciones). Al terminar una pista que sigue el relieve, esto se hace solo: bajo el asfalto el terreno queda un poco por debajo y junto al piano queda a ras, para volver a la pista sin escalón.</li>
+                <li><strong>Marcas viales:</strong> línea central (sin línea, discontinua, continua o doble continua) y líneas de borde. Siguen la pista y su peralte; en el juego son solo visuales.</li>
                 <li><strong>Eliminar pista seleccionada.</strong></li>
                 <li><strong>Borrar todas.</strong></li>
               </ul>
@@ -374,6 +375,8 @@
                 </table>
               </div>
               <ul>
+                <li><strong>Tipos de muro:</strong> liso (con altura, grosor y color), guardarraíl, New Jersey de hormigón, valla de malla, valla de madera, bordillo y acera. El bordillo y la acera se pueden pisar; los demás son muros en el juego.</li>
+                <li>Se pueden mover los puntos de un muro, cambiarle el tipo y borrarlo con un clic y <kbd>Supr</kbd> (o con clic derecho).</li>
                 <li><strong>Ajustes:</strong> altura 0,5–10 m, grosor 0,2–3 m, suavizado y color. Al anclar a la pista: <em>Separación del borde</em> 0–15 m.</li>
                 <li><kbd>Ctrl</kbd>+<kbd>Z</kbd>: último punto o último muro.</li>
               </ul>
@@ -429,6 +432,12 @@
                     <p>Elimina todas las teselas: se pierden los cambios de terreno y las bocas de túnel.</p></div>
                 </div>
               </div>
+              <div class="sub-card">
+                <h4>Pintar suelo</h4>
+                <p>Pinta <strong>tierra, arena, grava u hormigón</strong> sobre el terreno, con radio e intensidad. Cada uno tiene su física en el juego: tierra, arena y grava frenan y ensucian los neumáticos; el hormigón agarra como el asfalto. <em>Borrar</em> devuelve el suelo original.</p>
+                <h4>Terreno aleatorio</h4>
+                <p><em>Generar colinas al azar</em> añade colinas y valles a todo el terreno editable. Puedes elegir el desnivel (5–150 m) y el tamaño de las colinas (50–800 m). Cada clic da un resultado distinto y <kbd>Ctrl</kbd>+<kbd>Z</kbd> lo deshace.</p>
+              </div>
               <!-- PENDIENTE: captura de la herramienta Elevaciones -->
               <figure class="shot">
                 <div class="placeholder" role="img" aria-label="Marcador: captura del pincel Detalle editable con la malla roja (pendiente)">
@@ -477,6 +486,7 @@
                 <li><strong>Mueve el ratón</strong> para orientarlo: vista previa <span class="dot dot--green" aria-hidden="true"></span>verde = válido; <span class="dot dot--red" aria-hidden="true"></span>roja = la montaña no basta (hacen falta 3 m de montaña sobre el techo).</li>
                 <li><strong>Clic</strong> para crearlo: se completa solo hasta salir por el otro lado (máx. 3 km) y abre las bocas.</li>
               </ol>
+              <p>Cada boca se coloca donde la montaña ya cubre el techo, con un frontón de hormigón. Delante se abre una zanja de 25 m a la altura de la calzada. La carretera enganchada a la boca sale recta y después baja o sube suave hasta el suelo.</p>
               <div class="table-wrap">
                 <table>
                   <thead><tr><th scope="col">Ajuste</th><th scope="col">Valor</th></tr></thead>
@@ -568,7 +578,7 @@
                 <h4><svg class="icon" aria-hidden="true" style="vertical-align:-5px"><use href="#i-tree"/></svg> Árboles</h4>
                 <ul>
                   <li>Una imagen 2D puesta dos veces en X (dos planos cruzados) para que parezca 3D desde cualquier lado.</li>
-                  <li>De serie: <strong>Pino, Frondoso, Palmera, Arbusto</strong>. <em>Importar PNG…</em> para los tuyos (fondo transparente). <em>Mezcla</em> = tipo al azar.</li>
+                  <li>De serie: <strong>Pino, Frondoso, Palmera, Arbusto</strong>. <em>Importar PNG…</em> para los tuyos (fondo transparente). <em>Mezcla</em> = tipo al azar. Puedes marcar varios tipos a la vez (de serie e importados) para mezclar solo esos. Los PNG y modelos <code>.glb</code> que importes quedan en tu biblioteca y aparecen en todos tus proyectos hasta que los quites.</li>
                   <li>Pintar arrastrando (reparte en el <span class="dot dot--green" aria-hidden="true"></span>círculo verde respetando la <em>Separación</em>) o clic a clic. Modo <strong>Borrar</strong> (<span class="dot dot--red" aria-hidden="true"></span>círculo rojo).</li>
                   <li><strong>Altura</strong> y <strong>Variación</strong>. <em>No poner sobre pistas ni muros</em> activado por defecto.</li>
                   <li><strong>Rangos:</strong> Radio 1–80 m · Separación 2–40 m · Altura 1–40 m · Variación 0–0,6.</li>
@@ -623,6 +633,11 @@
                 <ul>
                   <li><strong>Rotonda:</strong> se genera por código: calzada (<code>ROAD</code>), piano rojo/blanco en la isleta (<code>KERB</code>), césped (<code>GRASS</code>). El final de cada salida imanta las pistas.</li>
                   <li><strong>Importadas de Blender:</strong> <em>Importar .glb</em> las añade a una biblioteca guardada dentro del proyecto; se centran y apoyan solas. Objetos llamados <code>ROAD</code>, <code>KERB</code>, <code>GRASS</code> o <code>WALL</code> llevan esa física; el resto choca como muro o nada (opción <em>Los coches chocan con él</em>). Más de 150 000 triángulos → aviso de revisar el modelo.</li>
+                </ul>
+                <h4>Objetos sueltos del catálogo</h4>
+                <ul>
+                  <li><strong>Marcas viales:</strong> paso de cebra, STOP, flechas, ceda el paso y rectángulo de box. Se pegan a la carretera, también en pendiente y peralte.</li>
+                  <li><strong>Conos en fila</strong> (decorativos: en el juego no se pueden derribar), señales de tráfico, farola, valla publicitaria con tu imagen, puesto de comisarios, carpa, balas de paja, barrera de neumáticos y pasarela peatonal sobre la pista.</li>
                 </ul>
                 <h4>Colocar</h4>
                 <ul>

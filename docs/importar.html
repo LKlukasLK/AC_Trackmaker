@@ -166,6 +166,24 @@
             <li>Las teselas se guardan en caché (repetir zona es casi inmediato).</li>
           </ul>
 
+          <h4>Relieve en España</h4>
+          <p>En España (también Baleares y Canarias) el relieve sale del <strong>MDT del Instituto Geográfico Nacional</strong>, hecho con láser aéreo: un punto cada 5 m en zonas pequeñas y cada 25 m en las grandes. El terreno editable nuevo usa siempre el de 5 m. Fuera de España se usa Terrain Tiles.</p>
+
+          <h4>Imagen nítida aunque la zona sea grande</h4>
+          <ul>
+            <li>En el editor, alrededor de la cámara se carga la ortofoto oficial a máxima resolución (unos 0,5 m por píxel).</li>
+            <li>Al exportar, el terreno a menos de 150 m de cada pista lleva esa misma foto nítida.</li>
+            <li>Con Sentinel-2 o un relieve de Blender se usa la foto normal.</li>
+          </ul>
+
+          <h4>Edificios reales</h4>
+          <p>En Importar, <em>Añadir edificios del mapa</em> coloca los edificios de OpenStreetMap de la zona (hasta 40 000) con su planta real y su altura; si el mapa no la tiene, una típica. Tejado plano y fachadas de Decoración; en el juego son muros. Los que tapan una pista no se ponen. <em>Recolocar</em> los vuelve a poner tras cambiar pistas o terreno y <em>Quitar edificios</em> los borra.</p>
+          <div class="callout callout--warn">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div><span class="callout-title">Servicios públicos gratuitos</span>
+              <p>Los edificios (Overpass) y el relieve del IGN dependen de servicios públicos gratuitos: si están caídos o saturados, la descarga puede fallar o tardar. Prueba otra vez más tarde.</p></div>
+          </div>
+
           <div class="callout callout--ok">
             <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
             <div><span class="callout-title">Licencia de las imágenes</span>
